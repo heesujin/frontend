@@ -46,12 +46,951 @@
 		.cafe_info > h3 {
 			margin-bottom: 15px;
 		}
+		#carousel_list > section {
+			display: none;
+		}
 
 	</style>
 
 	<script>
+		function listing() {
+			let search = $("#search").val();
+			$.ajax({
+				type: "GET",
+				url: "/cafe",
+				data: {search_give: search},
+				success: function (response) {
+					let rows = response["cafelist"];
+					if (limitLength < rows.length) {
+						for (let i = initLength; i < limitLength; i++) {
+							let name = rows[i]["name"];
+							let add = rows[i]["add"];
+							let add_more = rows[i]["add_more"];
+							let star = rows[i]["star"];
+							let url = rows[i]["url"];
+							let num = rows[i]["num"];
+							let image = rows[i]["image"];
+							let temp_html = `<article>
+								<a href="#" className="image featured"><img src="http://${image}" alt=""/></a>
+								<header className="cafe_info">
+									<h3><a href="#">${name}</a></h3>
+									<h5>주소 : ${add}</h5>
+									<h5>지번 : ${add_more}</h5>
+									<h5>⭐ &nbsp; ${star}</h5>
+								</header>
+							</article>`;
 
-	</script>
+							// let temp_html = ` <div class="col-lg-3 col-md-6">
+							//                         <div class="card" style="width: 20rem;">
+							//                             <img src="http://${image}" class="card-img-top" alt="">
+							//                             <div class="card-body">
+							//                                 <h5 class="card-title">${name}</h5>
+							//                                 <h6 class="card-text">${add}</h6>
+							//                                 <p class="card-subtitle mb-2 text-muted">${add_more}</p>
+							//                                 <p> ⭐ &nbsp; ${star} </p>
+							//                                 <a href="${url}" class="btn btn-primary">상세 보기</a>
+							//                             </div>
+							//                         </div>
+							//                     </div>`
+
+							$("#list").append(temp_html);
+							$("#morebtn").show();
+						}
+					} else {
+						for (let i = initLength; i < rows.length; i++) {
+							let name = rows[i]["name"];
+							let add = rows[i]["add"];
+							let add_more = rows[i]["add_more"];
+							let star = rows[i]["star"];
+							let url = rows[i]["url"];
+							let num = rows[i]["num"];
+							let image = rows[i]["image"];
+							let temp_html = `<article>
+								<a href="#" className="image featured"><img src="http://${image}" alt=""/></a>
+								<header className="cafe_info">
+									<h3><a href="#">${name}</a></h3>
+									<h5>주소 : ${add}</h5>
+									<h5>지번 : ${add_more}</h5>
+									<h5>⭐ &nbsp; ${star}</h5>
+								</header>
+							</article>`;
+							// let temp_html = ` <div class="col-lg-3 col-md-6">
+							//                         <div class="card" style="width: 20rem;">
+							//                             <img src="http://${image}" class="card-img-top" alt="">
+							//                             <div class="card-body">
+							//                                 <h5 class="card-title">${name}</h5>
+							//                                 <h6 class="card-text">${add}</h6>
+							//                                 <p class="card-subtitle mb-2 text-muted">${add_more}</p>
+							//                                 <p> ⭐ &nbsp; ${star} </p>
+							//                                 <a href="${url}" class="btn btn-primary">상세 보기</a>
+							//                             </div>
+							//                         </div>
+							//                     </div>`
+
+							$("#list").append(temp_html);
+							$("#morebtn").hide();
+						}
+					}
+				},
+			});
+		}
+
+		function q1() {
+				$.ajax({
+					type: 'GET',
+					url: '/cafe',
+					data: {},
+					success: function (response) {
+						let rows = response['cafe']
+						for (let i = 0; i < rows.length; i++) {
+							let name = rows[i]['name']
+							let add = rows[i]['add']
+							let add_more = rows[i]['add_more']
+							let star = rows[i]['star']
+							let img = rows[i]['image']
+							let temp_html = `<article>
+												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
+												<header class="cafe_info">
+													<h3><a href="#">${name}</a></h3>
+													<h5>주소 : ${add}</h5>
+													<h5>지번 : ${add_more}</h5>
+													<h5>⭐ ${star}</h5>
+												</header>
+											</article>`
+							console.log(response['cafe'])
+							$('#cafe_card').append(temp_html)
+						}
+					}
+				});
+
+			$('#gangdong').hide();
+			$('#gangbuk').hide();
+			$('#gangseo').hide();
+			$('#gwanak').hide();
+			$('#gwangjin').hide();
+			$('#guro').hide();
+			$('#geumcheon').hide();
+			$('#nowon').hide();
+			$('#dobong').hide();
+			$('#dongdaemun').hide();
+			$('#dongjak').hide();
+			$('#mapo').hide();
+			$('#seodaemun').hide();
+			$('#seocho').hide();
+			$('#seongdong').hide();
+			$('#seongbuk').hide();
+			$('#songpa').hide();
+			$('#yangcheon').hide();
+			$('#yeongdeungpo').hide();
+			$('#yongsan').hide();
+			$('#eunpyeong').hide();
+			$('#jongno').hide();
+			$('#jung').hide();
+			$('#jungnang').hide();
+		}
+
+		function q2() {
+			$('#gangnam').hide();
+			$('#gangbuk').hide();
+			$('#gangseo').hide();
+			$('#gwanak').hide();
+			$('#gwangjin').hide();
+			$('#guro').hide();
+			$('#geumcheon').hide();
+			$('#nowon').hide();
+			$('#dobong').hide();
+			$('#dongdaemun').hide();
+			$('#dongjak').hide();
+			$('#mapo').hide();
+			$('#seodaemun').hide();
+			$('#seocho').hide();
+			$('#seongdong').hide();
+			$('#seongbuk').hide();
+			$('#songpa').hide();
+			$('#yangcheon').hide();
+			$('#yeongdeungpo').hide();
+			$('#yongsan').hide();
+			$('#eunpyeong').hide();
+			$('#jongno').hide();
+			$('#jung').hide();
+			$('#jungnang').hide();
+		}
+
+		function q3() {
+			$('#gangnam').hide();
+			$('#gangdong').hide();
+			$('#gangseo').hide();
+			$('#gwanak').hide();
+			$('#gwangjin').hide();
+			$('#guro').hide();
+			$('#geumcheon').hide();
+			$('#nowon').hide();
+			$('#dobong').hide();
+			$('#dongdaemun').hide();
+			$('#dongjak').hide();
+			$('#mapo').hide();
+			$('#seodaemun').hide();
+			$('#seocho').hide();
+			$('#seongdong').hide();
+			$('#seongbuk').hide();
+			$('#songpa').hide();
+			$('#yangcheon').hide();
+			$('#yeongdeungpo').hide();
+			$('#yongsan').hide();
+			$('#eunpyeong').hide();
+			$('#jongno').hide();
+			$('#jung').hide();
+			$('#jungnang').hide();
+		}
+
+		function q4() {
+			$('#gangnam').hide();
+			$('#gangdong').hide();
+			$('#gangbuk').hide();
+			// $('#gangseo').hide();
+			$('#gwanak').hide();
+			$('#gwangjin').hide();
+			$('#guro').hide();
+			$('#geumcheon').hide();
+			$('#nowon').hide();
+			$('#dobong').hide();
+			$('#dongdaemun').hide();
+			$('#dongjak').hide();
+			$('#mapo').hide();
+			$('#seodaemun').hide();
+			$('#seocho').hide();
+			$('#seongdong').hide();
+			$('#seongbuk').hide();
+			$('#songpa').hide();
+			$('#yangcheon').hide();
+			$('#yeongdeungpo').hide();
+			$('#yongsan').hide();
+			$('#eunpyeong').hide();
+			$('#jongno').hide();
+			$('#jung').hide();
+			$('#jungnang').hide();
+		}
+
+		function q5() {
+			$('#gangnam').hide();
+			$('#gangdong').hide();
+			$('#gangbuk').hide();
+			$('#gangseo').hide();
+			// $('#gwanak').hide();
+			$('#gwangjin').hide();
+			$('#guro').hide();
+			$('#geumcheon').hide();
+			$('#nowon').hide();
+			$('#dobong').hide();
+			$('#dongdaemun').hide();
+			$('#dongjak').hide();
+			$('#mapo').hide();
+			$('#seodaemun').hide();
+			$('#seocho').hide();
+			$('#seongdong').hide();
+			$('#seongbuk').hide();
+			$('#songpa').hide();
+			$('#yangcheon').hide();
+			$('#yeongdeungpo').hide();
+			$('#yongsan').hide();
+			$('#eunpyeong').hide();
+			$('#jongno').hide();
+			$('#jung').hide();
+			$('#jungnang').hide();
+		}
+
+		function q6() {
+			$('#gangdong').hide();
+			$('#gangdong').hide();
+			$('#gangbuk').hide();
+			$('#gangseo').hide();
+			$('#gwanak').hide();
+			// $('#gwangjin').hide();
+			$('#guro').hide();
+			$('#geumcheon').hide();
+			$('#nowon').hide();
+			$('#dobong').hide();
+			$('#dongdaemun').hide();
+			$('#dongjak').hide();
+			$('#mapo').hide();
+			$('#seodaemun').hide();
+			$('#seocho').hide();
+			$('#seongdong').hide();
+			$('#seongbuk').hide();
+			$('#songpa').hide();
+			$('#yangcheon').hide();
+			$('#yeongdeungpo').hide();
+			$('#yongsan').hide();
+			$('#eunpyeong').hide();
+			$('#jongno').hide();
+			$('#jung').hide();
+			$('#jungnang').hide();
+		}
+
+		function q7() {
+			$('#gangnam').hide();
+			$('#gangdong').hide();
+			$('#gangbuk').hide();
+			$('#gangseo').hide();
+			$('#gwanak').hide();
+			$('#gwangjin').hide();
+			// $('#guro').hide();
+			$('#geumcheon').hide();
+			$('#nowon').hide();
+			$('#dobong').hide();
+			$('#dongdaemun').hide();
+			$('#dongjak').hide();
+			$('#mapo').hide();
+			$('#seodaemun').hide();
+			$('#seocho').hide();
+			$('#seongdong').hide();
+			$('#seongbuk').hide();
+			$('#songpa').hide();
+			$('#yangcheon').hide();
+			$('#yeongdeungpo').hide();
+			$('#yongsan').hide();
+			$('#eunpyeong').hide();
+			$('#jongno').hide();
+			$('#jung').hide();
+			$('#jungnang').hide();
+		}
+
+		function q8() {
+			$('#gangnam').hide();
+			$('#gangdong').hide();
+			$('#gangbuk').hide();
+			$('#gangseo').hide();
+			$('#gwanak').hide();
+			$('#gwangjin').hide();
+			$('#guro').hide();
+			// $('#geumcheon').hide();
+			$('#nowon').hide();
+			$('#dobong').hide();
+			$('#dongdaemun').hide();
+			$('#dongjak').hide();
+			$('#mapo').hide();
+			$('#seodaemun').hide();
+			$('#seocho').hide();
+			$('#seongdong').hide();
+			$('#seongbuk').hide();
+			$('#songpa').hide();
+			$('#yangcheon').hide();
+			$('#yeongdeungpo').hide();
+			$('#yongsan').hide();
+			$('#eunpyeong').hide();
+			$('#jongno').hide();
+			$('#jung').hide();
+			$('#jungnang').hide();
+		}
+
+		function q9() {
+			$('#gangnam').hide();
+			$('#gangdong').hide();
+			$('#gangbuk').hide();
+			$('#gangseo').hide();
+			$('#gwanak').hide();
+			$('#gwangjin').hide();
+			$('#guro').hide();
+			$('#geumcheon').hide();
+			// $('#nowon').hide();
+			$('#dobong').hide();
+			$('#dongdaemun').hide();
+			$('#dongjak').hide();
+			$('#mapo').hide();
+			$('#seodaemun').hide();
+			$('#seocho').hide();
+			$('#seongdong').hide();
+			$('#seongbuk').hide();
+			$('#songpa').hide();
+			$('#yangcheon').hide();
+			$('#yeongdeungpo').hide();
+			$('#yongsan').hide();
+			$('#eunpyeong').hide();
+			$('#jongno').hide();
+			$('#jung').hide();
+			$('#jungnang').hide();
+		}
+
+		function q10() {
+			$('#gangnam').hide();
+			$('#gangdong').hide();
+			$('#gangbuk').hide();
+			$('#gangseo').hide();
+			$('#gwanak').hide();
+			$('#gwangjin').hide();
+			$('#guro').hide();
+			$('#geumcheon').hide();
+			$('#nowon').hide();
+			// $('#dobong').hide();
+			$('#dongdaemun').hide();
+			$('#dongjak').hide();
+			$('#mapo').hide();
+			$('#seodaemun').hide();
+			$('#seocho').hide();
+			$('#seongdong').hide();
+			$('#seongbuk').hide();
+			$('#songpa').hide();
+			$('#yangcheon').hide();
+			$('#yeongdeungpo').hide();
+			$('#yongsan').hide();
+			$('#eunpyeong').hide();
+			$('#jongno').hide();
+			$('#jung').hide();
+			$('#jungnang').hide();
+		}
+
+		function q11() {
+			$('#gangdong').hide();
+			$('#gangdong').hide();
+			$('#gangbuk').hide();
+			$('#gangseo').hide();
+			$('#gwanak').hide();
+			$('#gwangjin').hide();
+			$('#guro').hide();
+			$('#geumcheon').hide();
+			$('#nowon').hide();
+			$('#dobong').hide();
+			// $('#dongdaemun').hide();
+			$('#dongjak').hide();
+			$('#mapo').hide();
+			$('#seodaemun').hide();
+			$('#seocho').hide();
+			$('#seongdong').hide();
+			$('#seongbuk').hide();
+			$('#songpa').hide();
+			$('#yangcheon').hide();
+			$('#yeongdeungpo').hide();
+			$('#yongsan').hide();
+			$('#eunpyeong').hide();
+			$('#jongno').hide();
+			$('#jung').hide();
+			$('#jungnang').hide();
+		}
+
+		function q12() {
+			$('#gangnam').hide();
+			$('#gangdong').hide();
+			$('#gangbuk').hide();
+			$('#gangseo').hide();
+			$('#gwanak').hide();
+			$('#gwangjin').hide();
+			$('#guro').hide();
+			$('#geumcheon').hide();
+			$('#nowon').hide();
+			$('#dobong').hide();
+			$('#dongdaemun').hide();
+			// $('#dongjak').hide();
+			$('#mapo').hide();
+			$('#seodaemun').hide();
+			$('#seocho').hide();
+			$('#seongdong').hide();
+			$('#seongbuk').hide();
+			$('#songpa').hide();
+			$('#yangcheon').hide();
+			$('#yeongdeungpo').hide();
+			$('#yongsan').hide();
+			$('#eunpyeong').hide();
+			$('#jongno').hide();
+			$('#jung').hide();
+			$('#jungnang').hide();
+		}
+
+		function q13() {
+			$('#gangnam').hide();
+			$('#gangdong').hide();
+			$('#gangbuk').hide();
+			$('#gangseo').hide();
+			$('#gwanak').hide();
+			$('#gwangjin').hide();
+			$('#guro').hide();
+			$('#geumcheon').hide();
+			$('#nowon').hide();
+			$('#dobong').hide();
+			$('#dongdaemun').hide();
+			$('#dongjak').hide();
+			// $('#mapo').hide();
+			$('#seodaemun').hide();
+			$('#seocho').hide();
+			$('#seongdong').hide();
+			$('#seongbuk').hide();
+			$('#songpa').hide();
+			$('#yangcheon').hide();
+			$('#yeongdeungpo').hide();
+			$('#yongsan').hide();
+			$('#eunpyeong').hide();
+			$('#jongno').hide();
+			$('#jung').hide();
+			$('#jungnang').hide();
+		}
+
+		function q14() {
+			$('#gangnam').hide();
+			$('#gangdong').hide();
+			$('#gangbuk').hide();
+			$('#gangseo').hide();
+			$('#gwanak').hide();
+			$('#gwangjin').hide();
+			$('#guro').hide();
+			$('#geumcheon').hide();
+			$('#nowon').hide();
+			$('#dobong').hide();
+			$('#dongdaemun').hide();
+			$('#dongjak').hide();
+			$('#mapo').hide();
+			// $('#seodaemun').hide();
+			$('#seocho').hide();
+			$('#seongdong').hide();
+			$('#seongbuk').hide();
+			$('#songpa').hide();
+			$('#yangcheon').hide();
+			$('#yeongdeungpo').hide();
+			$('#yongsan').hide();
+			$('#eunpyeong').hide();
+			$('#jongno').hide();
+			$('#jung').hide();
+			$('#jungnang').hide();
+		}
+
+		function q15() {
+			$('#gangnam').hide();
+			$('#gangdong').hide();
+			$('#gangbuk').hide();
+			$('#gangseo').hide();
+			$('#gwanak').hide();
+			$('#gwangjin').hide();
+			$('#guro').hide();
+			$('#geumcheon').hide();
+			$('#nowon').hide();
+			$('#dobong').hide();
+			$('#dongdaemun').hide();
+			$('#dongjak').hide();
+			$('#mapo').hide();
+			$('#seodaemun').hide();
+			// $('#seocho').hide();
+			$('#seongdong').hide();
+			$('#seongbuk').hide();
+			$('#songpa').hide();
+			$('#yangcheon').hide();
+			$('#yeongdeungpo').hide();
+			$('#yongsan').hide();
+			$('#eunpyeong').hide();
+			$('#jongno').hide();
+			$('#jung').hide();
+			$('#jungnang').hide();
+		}
+
+		function q16() {
+			$('#gangnam').hide();
+			$('#gangdong').hide();
+			$('#gangbuk').hide();
+			$('#gangseo').hide();
+			$('#gwanak').hide();
+			$('#gwangjin').hide();
+			$('#guro').hide();
+			$('#geumcheon').hide();
+			$('#nowon').hide();
+			$('#dobong').hide();
+			$('#dongdaemun').hide();
+			$('#dongjak').hide();
+			$('#mapo').hide();
+			$('#seodaemun').hide();
+			$('#seocho').hide();
+			// $('#seongdong').hide();
+			$('#seongbuk').hide();
+			$('#songpa').hide();
+			$('#yangcheon').hide();
+			$('#yeongdeungpo').hide();
+			$('#yongsan').hide();
+			$('#eunpyeong').hide();
+			$('#jongno').hide();
+			$('#jung').hide();
+			$('#jungnang').hide();
+		}
+
+		function q17() {
+			$('#gangnam').hide();
+			$('#gangdong').hide();
+			$('#gangbuk').hide();
+			$('#gangseo').hide();
+			$('#gwanak').hide();
+			$('#gwangjin').hide();
+			$('#guro').hide();
+			$('#geumcheon').hide();
+			$('#nowon').hide();
+			$('#dobong').hide();
+			$('#dongdaemun').hide();
+			$('#dongjak').hide();
+			$('#mapo').hide();
+			$('#seodaemun').hide();
+			$('#seocho').hide();
+			$('#seongdong').hide();
+			// $('#seongbuk').hide();
+			$('#songpa').hide();
+			$('#yangcheon').hide();
+			$('#yeongdeungpo').hide();
+			$('#yongsan').hide();
+			$('#eunpyeong').hide();
+			$('#jongno').hide();
+			$('#jung').hide();
+			$('#jungnang').hide();
+		}
+
+		function q18() {
+			$('#gangnam').hide();
+			$('#gangdong').hide();
+			$('#gangbuk').hide();
+			$('#gangseo').hide();
+			$('#gwanak').hide();
+			$('#gwangjin').hide();
+			$('#guro').hide();
+			$('#geumcheon').hide();
+			$('#nowon').hide();
+			$('#dobong').hide();
+			$('#dongdaemun').hide();
+			$('#dongjak').hide();
+			$('#mapo').hide();
+			$('#seodaemun').hide();
+			$('#seocho').hide();
+			$('#seongdong').hide();
+			$('#seongbuk').hide();
+			// $('#songpa').hide();
+			$('#yangcheon').hide();
+			$('#yeongdeungpo').hide();
+			$('#yongsan').hide();
+			$('#eunpyeong').hide();
+			$('#jongno').hide();
+			$('#jung').hide();
+			$('#jungnang').hide();
+		}
+
+		function q19() {
+			$('#gangnam').hide();
+			$('#gangdong').hide();
+			$('#gangbuk').hide();
+			$('#gangseo').hide();
+			$('#gwanak').hide();
+			$('#gwangjin').hide();
+			$('#guro').hide();
+			$('#geumcheon').hide();
+			$('#nowon').hide();
+			$('#dobong').hide();
+			$('#dongdaemun').hide();
+			$('#dongjak').hide();
+			$('#mapo').hide();
+			$('#seodaemun').hide();
+			$('#seocho').hide();
+			$('#seongdong').hide();
+			$('#seongbuk').hide();
+			$('#songpa').hide();
+			// $('#yangcheon').hide();
+			$('#yeongdeungpo').hide();
+			$('#yongsan').hide();
+			$('#eunpyeong').hide();
+			$('#jongno').hide();
+			$('#jung').hide();
+			$('#jungnang').hide();
+		}
+
+		function q20() {
+			$('#gangnam').hide();
+			$('#gangdong').hide();
+			$('#gangbuk').hide();
+			$('#gangseo').hide();
+			$('#gwanak').hide();
+			$('#gwangjin').hide();
+			$('#guro').hide();
+			$('#geumcheon').hide();
+			$('#nowon').hide();
+			$('#dobong').hide();
+			$('#dongdaemun').hide();
+			$('#dongjak').hide();
+			$('#mapo').hide();
+			$('#seodaemun').hide();
+			$('#seocho').hide();
+			$('#seongdong').hide();
+			$('#seongbuk').hide();
+			$('#songpa').hide();
+			$('#yangcheon').hide();
+			// $('#yeongdeungpo').hide();
+			$('#yongsan').hide();
+			$('#eunpyeong').hide();
+			$('#jongno').hide();
+			$('#jung').hide();
+			$('#jungnang').hide();
+		}
+
+		function q21() {
+			$('#gangdong').hide();
+			$('#gangdong').hide();
+			$('#gangbuk').hide();
+			$('#gangseo').hide();
+			$('#gwanak').hide();
+			$('#gwangjin').hide();
+			$('#guro').hide();
+			$('#geumcheon').hide();
+			$('#nowon').hide();
+			$('#dobong').hide();
+			$('#dongdaemun').hide();
+			$('#dongjak').hide();
+			$('#mapo').hide();
+			$('#seodaemun').hide();
+			$('#seocho').hide();
+			$('#seongdong').hide();
+			$('#seongbuk').hide();
+			$('#songpa').hide();
+			$('#yangcheon').hide();
+			$('#yeongdeungpo').hide();
+			// $('#yongsan').hide();
+			$('#eunpyeong').hide();
+			$('#jongno').hide();
+			$('#jung').hide();
+			$('#jungnang').hide();
+		}
+
+		function q22() {
+			$('#gangnam').hide();
+			$('#gangdong').hide();
+			$('#gangbuk').hide();
+			$('#gangseo').hide();
+			$('#gwanak').hide();
+			$('#gwangjin').hide();
+			$('#guro').hide();
+			$('#geumcheon').hide();
+			$('#nowon').hide();
+			$('#dobong').hide();
+			$('#dongdaemun').hide();
+			$('#dongjak').hide();
+			$('#mapo').hide();
+			$('#seodaemun').hide();
+			$('#seocho').hide();
+			$('#seongdong').hide();
+			$('#seongbuk').hide();
+			$('#songpa').hide();
+			$('#yangcheon').hide();
+			$('#yeongdeungpo').hide();
+			$('#yongsan').hide();
+			// $('#eunpyeong').hide();
+			$('#jongno').hide();
+			$('#jung').hide();
+			$('#jungnang').hide();
+		}
+
+		function q23() {
+			$('#gangnam').hide();
+			$('#gangdong').hide();
+			$('#gangbuk').hide();
+			$('#gangseo').hide();
+			$('#gwanak').hide();
+			$('#gwangjin').hide();
+			$('#guro').hide();
+			$('#geumcheon').hide();
+			$('#nowon').hide();
+			$('#dobong').hide();
+			$('#dongdaemun').hide();
+			$('#dongjak').hide();
+			$('#mapo').hide();
+			$('#seodaemun').hide();
+			$('#seocho').hide();
+			$('#seongdong').hide();
+			$('#seongbuk').hide();
+			$('#songpa').hide();
+			$('#yangcheon').hide();
+			$('#yeongdeungpo').hide();
+			$('#yongsan').hide();
+			$('#eunpyeong').hide();
+			// $('#jongno').hide();
+			$('#jung').hide();
+			$('#jungnang').hide();
+		}
+
+		function q24() {
+			$('#gangnam').hide();
+			$('#gangdong').hide();
+			$('#gangbuk').hide();
+			$('#gangseo').hide();
+			$('#gwanak').hide();
+			$('#gwangjin').hide();
+			$('#guro').hide();
+			$('#geumcheon').hide();
+			$('#nowon').hide();
+			$('#dobong').hide();
+			$('#dongdaemun').hide();
+			$('#dongjak').hide();
+			$('#mapo').hide();
+			$('#seodaemun').hide();
+			$('#seocho').hide();
+			$('#seongdong').hide();
+			$('#seongbuk').hide();
+			$('#songpa').hide();
+			$('#yangcheon').hide();
+			$('#yeongdeungpo').hide();
+			$('#yongsan').hide();
+			$('#eunpyeong').hide();
+			$('#jongno').hide();
+			// $('#jung').hide();
+			$('#jungnang').hide();
+		}
+
+		function q25() {
+			$('#gangnam').hide();
+			$('#gangdong').hide();
+			$('#gangbuk').hide();
+			$('#gangseo').hide();
+			$('#gwanak').hide();
+			$('#gwangjin').hide();
+			$('#guro').hide();
+			$('#geumcheon').hide();
+			$('#nowon').hide();
+			$('#dobong').hide();
+			$('#dongdaemun').hide();
+			$('#dongjak').hide();
+			$('#mapo').hide();
+			$('#seodaemun').hide();
+			$('#seocho').hide();
+			$('#seongdong').hide();
+			$('#seongbuk').hide();
+			$('#songpa').hide();
+			$('#yangcheon').hide();
+			$('#yeongdeungpo').hide();
+			$('#yongsan').hide();
+			$('#eunpyeong').hide();
+			$('#jongno').hide();
+			$('#jung').hide();
+			// $('#jungnang').hide();
+		}
+
+		function reload() {
+			window.location.reload();
+		}
+
+
+
+	// function q1() {
+	// 		$('#carousel_list > section').hide();
+	// 		$('#gangnam').show();
+	// }
+	//
+	// function q2() {
+	// 		$('#carousel_list > section').hide();
+	// 		$('#gangdong').show();
+	// }
+	//
+	// function q3() {
+	// 		$('#carousel_list > section').hide();
+	// 		$('#gangbuk').show();
+	// }
+	//
+	// function q4() {
+	// 		$('#carousel_list > section').hide();
+	// 		$('#gangseo').show();
+	// }
+	//
+	// function q5() {
+	// 		$('#carousel_list > section').hide();
+	// 		$('#gwanak').show();
+	// }
+	//
+	// function q6() {
+	// 		$('#carousel_list > section').hide();
+	// 		$('#gwangjin').show();
+	// }
+	//
+	// function q7() {
+	// 		$('#carousel_list > section').hide();
+	// 		$('#guro').show();
+	// }
+	//
+	// function q8() {
+	// 		$('#carousel_list > section').hide();
+	// 		$('#geumcheon').show();
+	// }
+	//
+	// function q9() {
+	// 		$('#carousel_list > section').hide();
+	// 		$('#nowon').show();
+	// }
+	//
+	// function q10() {
+	// 		$('#carousel_list > section').hide();
+	// 		$('#dobong').show();
+	// }
+	//
+	// function q11() {
+	// 		$('#carousel_list > section').hide();
+	// 		$('#dongdaemun').show();
+	// }
+	//
+	// function q12() {
+	// 		$('#carousel_list > section').hide();
+	// 		$('#dongjak').show();
+	// }
+	//
+	// function q13() {
+	// 		$('#carousel_list > section').hide();
+	// 		$('#mapo').show();
+	// }
+	//
+	// function q14() {
+	// 		$('#carousel_list > section').hide();
+	// 		$('#seodaemun').show();
+	// }
+	//
+	// function q15() {
+	// 		$('#carousel_list > section').hide();
+	// 		$('#seocho').show();
+	// }
+	//
+	// function q16() {
+	// 		$('#carousel_list > section').hide();
+	// 		$('#seongdong').show();
+	// }
+	//
+	// function q17() {
+	// 		$('#carousel_list > section').hide();
+	// 		$('#seongbuk').show();
+	// }
+	//
+	// function q18() {
+	// 		$('#carousel_list > section').hide();
+	// 		$('#songpa').show();
+	// }
+	//
+	// function q19() {
+	// 		$('#carousel_list > section').hide();
+	// 		$('#yangcheon').show();
+	// }
+	//
+	// function q20() {
+	// 		$('#carousel_list > section').hide();
+	// 		$('#yeongdeungpo').show();
+	// }
+	//
+	// function q21() {
+	// 		$('#carousel_list > section').hide();
+	// 		$('#yongsan').show();
+	// }
+	//
+	// function q22() {
+	// 		$('#carousel_list > section').hide();
+	// 		$('#eunpyeong').show();
+	// }
+	//
+	// function q23() {
+	// 		$('#carousel_list > section').hide();
+	// 		$('#jongno').show();
+	// }
+	//
+	// function q24() {
+	// 		$('#carousel_list > section').hide();
+	// 		$('#jung').show();
+	// }
+	//
+	// function q25() {
+	// 		$('#carousel_list > section').hide();
+	// 		$('#jungnang').show();
+	// }
+    </script>
+
 
 
 	<body class="homepage is-preload">
@@ -68,83 +1007,83 @@
 							<p>for seoul</p>
 						</header>
 						<div class="gu_button">
-							<footer>
+							<footer onclick="q1()">
 								<a href="#gangnam" class="button circled scrolly">강남구</a>
 							</footer>
-							<footer>
+							<footer onclick="q2()">
 								<a href="#gangdong" class="button circled scrolly">강동구</a>
 							</footer>
-							<footer>
+							<footer onclick="q3()">
 								<a href="#gangbuk" class="button circled scrolly">강북구</a>
 							</footer>
-							<footer>
+							<footer onclick="q4()">
 								<a href="#gangseo" class="button circled scrolly">강서구</a>
 							</footer>
-							<footer>
+							<footer onclick="q5()">
 								<a href="#gwanak" class="button circled scrolly">관악구</a>
 							</footer>
-							<footer>
+							<footer onclick="q6()">
 								<a href="#gwangjin" class="button circled scrolly">광진구</a>
 							</footer>
-							<footer>
+							<footer onclick="q7()">
 								<a href="#guro" class="button circled scrolly">구로구</a>
 							</footer>
-							<footer>
+							<footer onclick="q8()">
 								<a href="#geumcheon" class="button circled scrolly">금천구</a>
 							</footer>
-							<footer>
+							<footer onclick="q9()">
 								<a href="#nowon" class="button circled scrolly">노원구</a>
 							</footer>
 						</div>
 						<div class="gu_button">
-							<footer>
+							<footer onclick="q10()">
 								<a href="#dobong" class="button circled scrolly">도봉구</a>
 							</footer>
-							<footer>
+							<footer onclick="q11()">
 								<a href="#dongdaemun" class="button circled scrolly">동대문구</a>
 							</footer>
-							<footer>
+							<footer onclick="q12()">
 								<a href="#dongjak" class="button circled scrolly">동작구</a>
 							</footer>
-							<footer>
+							<footer onclick="q13()">
 								<a href="#mapo" class="button circled scrolly">마포구</a>
 							</footer>
-							<footer>
+							<footer onclick="q14()">
 								<a href="#seodaemun" class="button circled scrolly">서대문구</a>
 							</footer>
-							<footer>
+							<footer onclick="q15()">
 								<a href="#seocho" class="button circled scrolly">서초구</a>
 							</footer>
-							<footer>
+							<footer onclick="q16()">
 								<a href="#seongdong" class="button circled scrolly">성동구</a>
 							</footer>
-							<footer>
+							<footer onclick="q17()">
 								<a href="#seongbuk" class="button circled scrolly">성북구</a>
 							</footer>
 						</div>
 						<div class="gu_button">
-							<footer>
+							<footer onclick="q18()">
 								<a href="#songpa" class="button circled scrolly">송파구</a>
 							</footer>
-							<footer>
+							<footer onclick="q19()">
 								<a href="#yangcheon" class="button circled scrolly">양천구</a>
 							</footer>
-							<footer>
+							<footer onclick="q20()">
 								<a href="#yeongdeungpo" class="button circled scrolly">영등포구</a>
 							</footer>
-							<footer>
+							<footer onclick="q21()">
 								<a href="#yongsan" class="button circled scrolly">용산구</a>
 							</footer>
-							<footer>
+							<footer onclick="q22()">
 								<a href="#eunpyeong" class="button circled scrolly">은평구</a>
 							</footer>
-							<footer>
+							<footer onclick="q23()">
 								<a href="#jongno" class="button circled scrolly">종로구</a>
 							</footer>
-							<footer>
+							<footer onclick="q24()">
 								<a href="#jung" class="button circled scrolly">중구</a>
 							</footer>
-							<footer>
+							<footer onclick="q25()">
 								<a href="#jungnang" class="button circled scrolly">중랑구</a>
 							</footer>
 						</div>
@@ -159,1556 +1098,1557 @@
 				</section>
 
 			<!-- Carousel -->
-				<section id="gangnam" class="carousel">
-					<div class="home_key">
-						<p class="carousel_name">☕ 강남구 카페 목록</p>
-						<a href="#logo">홈으로 🔼</a>
-					</div>
-					<div class="reel">
+			<section id="gangnam" class="carousel">
+				<div class="home_key">
+					<p class="carousel_name">☕ 강남구 카페 목록</p>
+					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+				</div>
+				<div id="cafe_card" class="reel">
 
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
 
-					</div>
-				</section>
-				<section id="gangdong" class="carousel">
-					<div class="home_key">
-						<p class="carousel_name">☕ 강동구 카페 목록</p>
-						<a href="#logo">홈으로 🔼</a>
-					</div>
-					<div class="reel">
+				</div>
+			</section>
+			<section id="gangdong" class="carousel">
+				<div class="home_key">
+					<p class="carousel_name">☕ 강동구 카페 목록</p>
+					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+				</div>
+				<div class="reel">
 
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
 
-					</div>
-				</section>
-				<section id="gangbuk" class="carousel">
-					<div class="home_key">
-						<p class="carousel_name">☕ 강북구 카페 목록</p>
-						<a href="#logo">홈으로 🔼</a>
-					</div>
-					<div class="reel">
+				</div>
+			</section>
+			<section id="gangbuk" class="carousel">
+				<div class="home_key">
+					<p class="carousel_name">☕ 강북구 카페 목록</p>
+					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+				</div>
+				<div class="reel">
 
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
 
-					</div>
-				</section>
-				<section id="gangseo" class="carousel">
-					<div class="home_key">
-						<p class="carousel_name">☕ 강서구 카페 목록</p>
-						<a href="#logo">홈으로 🔼</a>
-					</div>
-					<div class="reel">
+				</div>
+			</section>
+			<section id="gangseo" class="carousel">
+				<div class="home_key">
+					<p class="carousel_name">☕ 강서구 카페 목록</p>
+					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+				</div>
+				<div class="reel">
 
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
 
-					</div>
-				</section>
-				<section id="gwanak" class="carousel">
-					<div class="home_key">
-						<p class="carousel_name">☕ 관악구 카페 목록</p>
-						<a href="#logo">홈으로 🔼</a>
-					</div>
-					<div class="reel">
+				</div>
+			</section>
+			<section id="gwanak" class="carousel">
+				<div class="home_key">
+					<p class="carousel_name">☕ 관악구 카페 목록</p>
+					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+				</div>
+				<div class="reel">
 
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
 
-					</div>
-				</section>
-				<section id="gwangjin" class="carousel">
-					<div class="home_key">
-						<p class="carousel_name">☕ 광진구 카페 목록</p>
-						<a href="#logo">홈으로 🔼</a>
-					</div>
-					<div class="reel">
+				</div>
+			</section>
+			<section id="gwangjin" class="carousel">
+				<div class="home_key">
+					<p class="carousel_name">☕ 광진구 카페 목록</p>
+					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+				</div>
+				<div class="reel">
 
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
 
-					</div>
-				</section>
-				<section id="guro" class="carousel">
-					<div class="home_key">
-						<p class="carousel_name">☕ 구로구 카페 목록</p>
-						<a href="#logo">홈으로 🔼</a>
-					</div>
-					<div class="reel">
+				</div>
+			</section>
+			<section id="guro" class="carousel">
+				<div class="home_key">
+					<p class="carousel_name">☕ 구로구 카페 목록</p>
+					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+				</div>
+				<div class="reel">
 
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
 
-					</div>
-				</section>
-				<section id="geumcheon" class="carousel">
-					<div class="home_key">
-						<p class="carousel_name">☕ 금천구 카페 목록</p>
-						<a href="#logo">홈으로 🔼</a>
-					</div>
-					<div class="reel">
+				</div>
+			</section>
+			<section id="geumcheon" class="carousel">
+				<div class="home_key">
+					<p class="carousel_name">☕ 금천구 카페 목록</p>
+					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+				</div>
+				<div class="reel">
 
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
 
-					</div>
-				</section>
-				<section id="nowon" class="carousel">
-					<div class="home_key">
-						<p class="carousel_name">☕ 노원구 카페 목록</p>
-						<a href="#logo">홈으로 🔼</a>
-					</div>
-					<div class="reel">
+				</div>
+			</section>
+			<section id="nowon" class="carousel">
+				<div class="home_key">
+					<p class="carousel_name">☕ 노원구 카페 목록</p>
+					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+				</div>
+				<div class="reel">
 
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
 
-					</div>
-				</section>
-				<section id="dobong" class="carousel">
-					<div class="home_key">
-						<p class="carousel_name">☕ 도봉구 카페 목록</p>
-						<a href="#logo">홈으로 🔼</a>
-					</div>
-					<div class="reel">
+				</div>
+			</section>
+			<section id="dobong" class="carousel">
+				<div class="home_key">
+					<p class="carousel_name">☕ 도봉구 카페 목록</p>
+					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+				</div>
+				<div class="reel">
 
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
 
-					</div>
-				</section>
-				<section id="dongdaemun" class="carousel">
-					<div class="home_key">
-						<p class="carousel_name">☕ 동대문구 카페 목록</p>
-						<a href="#logo">홈으로 🔼</a>
-					</div>
-					<div class="reel">
+				</div>
+			</section>
+			<section id="dongdaemun" class="carousel">
+				<div class="home_key">
+					<p class="carousel_name">☕ 동대문구 카페 목록</p>
+					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+				</div>
+				<div class="reel">
 
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
 
-					</div>
-				</section>
-				<section id="dongjak" class="carousel">
-					<div class="home_key">
-						<p class="carousel_name">☕ 동작구 카페 목록</p>
-						<a href="#logo">홈으로 🔼</a>
-					</div>
-					<div class="reel">
+				</div>
+			</section>
+			<section id="dongjak" class="carousel">
+				<div class="home_key">
+					<p class="carousel_name">☕ 동작구 카페 목록</p>
+					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+				</div>
+				<div class="reel">
 
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
 
-					</div>
-				</section>
-				<section id="mapo" class="carousel">
-					<div class="home_key">
-						<p class="carousel_name">☕ 마포구 카페 목록</p>
-						<a href="#logo">홈으로 🔼</a>
-					</div>
-					<div class="reel">
+				</div>
+			</section>
+			<section id="mapo" class="carousel">
+				<div class="home_key">
+					<p class="carousel_name">☕ 마포구 카페 목록</p>
+					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+				</div>
+				<div class="reel">
 
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
 
-					</div>
-				</section>
-				<section id="seodaemun" class="carousel">
-					<div class="home_key">
-						<p class="carousel_name">☕ 서대문구 카페 목록</p>
-						<a href="#logo">홈으로 🔼</a>
-					</div>
-					<div class="reel">
+				</div>
+			</section>
+			<section id="seodaemun" class="carousel">
+				<div class="home_key">
+					<p class="carousel_name">☕ 서대문구 카페 목록</p>
+					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+				</div>
+				<div class="reel">
 
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
 
-					</div>
-				</section>
-				<section id="seocho" class="carousel">
-					<div class="home_key">
-						<p class="carousel_name">☕ 서초구 카페 목록</p>
-						<a href="#logo">홈으로 🔼</a>
-					</div>
-					<div class="reel">
+				</div>
+			</section>
+			<section id="seocho" class="carousel">
+				<div class="home_key">
+					<p class="carousel_name">☕ 서초구 카페 목록</p>
+					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+				</div>
+				<div class="reel">
 
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
 
-					</div>
-				</section>
-				<section id="seongdong" class="carousel">
-					<div class="home_key">
-						<p class="carousel_name">☕ 성동구 카페 목록</p>
-						<a href="#logo">홈으로 🔼</a>
-					</div>
-					<div class="reel">
+				</div>
+			</section>
+			<section id="seongdong" class="carousel">
+				<div class="home_key">
+					<p class="carousel_name">☕ 성동구 카페 목록</p>
+					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+				</div>
+				<div class="reel">
 
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
 
-					</div>
-				</section>
-				<section id="seongbuk" class="carousel">
-					<div class="home_key">
-						<p class="carousel_name">☕ 성북구 카페 목록</p>
-						<a href="#logo">홈으로 🔼</a>
-					</div>
-					<div class="reel">
+				</div>
+			</section>
+			<section id="seongbuk" class="carousel">
+				<div class="home_key">
+					<p class="carousel_name">☕ 성북구 카페 목록</p>
+					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+				</div>
+				<div class="reel">
 
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
 
-					</div>
-				</section>
-				<section id="songpa" class="carousel">
-					<div class="home_key">
-						<p class="carousel_name">☕ 송파구 카페 목록</p>
-						<a href="#logo">홈으로 🔼</a>
-					</div>
-					<div class="reel">
+				</div>
+			</section>
+			<section id="songpa" class="carousel">
+				<div class="home_key">
+					<p class="carousel_name">☕ 송파구 카페 목록</p>
+					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+				</div>
+				<div class="reel">
 
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
 
-					</div>
-				</section>
-				<section id="yangcheon" class="carousel">
-					<div class="home_key">
-						<p class="carousel_name">☕ 양천구 카페 목록</p>
-						<a href="#logo">홈으로 🔼</a>
-					</div>
-					<div class="reel">
+				</div>
+			</section>
+			<section id="yangcheon" class="carousel">
+				<div class="home_key">
+					<p class="carousel_name">☕ 양천구 카페 목록</p>
+					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+				</div>
+				<div class="reel">
 
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
 
-					</div>
-				</section>
-				<section id="yeongdeungpo" class="carousel">
-					<div class="home_key">
-						<p class="carousel_name">☕ 영등포구 카페 목록</p>
-						<a href="#logo">홈으로 🔼</a>
-					</div>
-					<div class="reel">
+				</div>
+			</section>
+			<section id="yeongdeungpo" class="carousel">
+				<div class="home_key">
+					<p class="carousel_name">☕ 영등포구 카페 목록</p>
+					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+				</div>
+				<div class="reel">
 
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
 
-					</div>
-				</section>
-				<section id="yongsan" class="carousel">
-					<div class="home_key">
-						<p class="carousel_name">☕ 용산구 카페 목록</p>
-						<a href="#logo">홈으로 🔼</a>
-					</div>
-					<div class="reel">
+				</div>
+			</section>
+			<section id="yongsan" class="carousel">
+				<div class="home_key">
+					<p class="carousel_name">☕ 용산구 카페 목록</p>
+					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+				</div>
+				<div class="reel">
 
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
 
-					</div>
-				</section>
-				<section id="eunpyeong" class="carousel">
-					<div class="home_key">
-						<p class="carousel_name">☕ 은평구 카페 목록</p>
-						<a href="#logo">홈으로 🔼</a>
-					</div>
-					<div class="reel">
+				</div>
+			</section>
+			<section id="eunpyeong" class="carousel">
+				<div class="home_key">
+					<p class="carousel_name">☕ 은평구 카페 목록</p>
+					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+				</div>
+				<div class="reel">
 
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
 
-					</div>
-				</section>
-				<section id="jongno" class="carousel">
-					<div class="home_key">
-						<p class="carousel_name">☕ 종로구 카페 목록</p>
-						<a href="#logo">홈으로 🔼</a>
-					</div>
-					<div class="reel">
+				</div>
+			</section>
+			<section id="jongno" class="carousel">
+				<div class="home_key">
+					<p class="carousel_name">☕ 종로구 카페 목록</p>
+					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+				</div>
+				<div class="reel">
 
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
 
-					</div>
-				</section>
-				<section id="jung" class="carousel">
-					<div class="home_key">
-						<p class="carousel_name">☕ 중구 카페 목록</p>
-						<a href="#logo">홈으로 🔼</a>
-					</div>
-					<div class="reel">
+				</div>
+			</section>
+			<section id="jung" class="carousel">
+				<div class="home_key">
+					<p class="carousel_name">☕ 중구 카페 목록</p>
+					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+				</div>
+				<div class="reel">
 
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
 
-					</div>
-				</section>
-				<section id="jungnang" class="carousel">
-					<div class="home_key">
-						<p class="carousel_name">☕ 중랑구 카페 목록</p>
-						<a href="#logo">홈으로 🔼</a>
-					</div>
-					<div class="reel">
+				</div>
+			</section>
+			<section id="jungnang" class="carousel">
+				<div class="home_key">
+					<p class="carousel_name">☕ 중랑구 카페 목록</p>
+					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+				</div>
+				<div class="reel">
 
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article><article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
-						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-							<header class="cafe_info">
-								<h3><a href="#">카페명</a></h3>
-								<h5>주소 : </h5>
-								<h5>지번 : </h5>
-								<h5>⭐ 4.6</h5>
-							</header>
-						</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article><article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
+					<article>
+						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
+						<header class="cafe_info">
+							<h3><a href="#">카페명</a></h3>
+							<h5>주소 : </h5>
+							<h5>지번 : </h5>
+							<h5>⭐ 4.6</h5>
+						</header>
+					</article>
 
-					</div>
-				</section>
+				</div>
+			</section>
+
 
 
 
