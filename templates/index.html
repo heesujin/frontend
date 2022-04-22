@@ -148,7 +148,9 @@
 							let add_more = rows[i]['add_more']
 							let star = rows[i]['star']
 							let img = rows[i]['image']
-							let temp_html = `<article>
+							let temp_html = ``
+							if (add.includes('강남구') == true) {
+								temp_html = `<article>
 												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
 												<header class="cafe_info">
 													<h3><a href="#">${name}</a></h3>
@@ -157,838 +159,1386 @@
 													<h5>⭐ ${star}</h5>
 												</header>
 											</article>`
-							console.log(response['cafe'])
-							$('#cafe_card').append(temp_html)
+							}
+							$('#cafe_card_gangnam').append(temp_html)
+						}
+					}
+				});
+			$('#gangdong').remove();
+			$('#gangbuk').remove();
+			$('#gangseo').remove();
+			$('#gwanak').remove();
+			$('#gwangjin').remove();
+			$('#guro').remove();
+			$('#geumcheon').remove();
+			$('#nowon').remove();
+			$('#dobong').remove();
+			$('#dongdaemun').remove();
+			$('#dongjak').remove();
+			$('#mapo').remove();
+			$('#seodaemun').remove();
+			$('#seocho').remove();
+			$('#seongdong').remove();
+			$('#seongbuk').remove();
+			$('#songpa').remove();
+			$('#yangcheon').remove();
+			$('#yeongdeungpo').remove();
+			$('#yongsan').remove();
+			$('#eunpyeong').remove();
+			$('#jongno').remove();
+			$('#jung').remove();
+			$('#jungnang').remove();
+		}
+
+		function q2() {
+			$.ajax({
+					type: 'GET',
+					url: '/cafe',
+					data: {},
+					success: function (response) {
+						let rows = response['cafe']
+						for (let i = 0; i < rows.length; i++) {
+							let name = rows[i]['name']
+							let add = rows[i]['add']
+							let add_more = rows[i]['add_more']
+							let star = rows[i]['star']
+							let img = rows[i]['image']
+							let temp_html = ``
+							if (add.includes('강동구') == true) {
+								temp_html = `<article>
+												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
+												<header class="cafe_info">
+													<h3><a href="#">${name}</a></h3>
+													<h5>주소 : ${add}</h5>
+													<h5>지번 : ${add_more}</h5>
+													<h5>⭐ ${star}</h5>
+												</header>
+											</article>`
+							}
+							$('#cafe_card_gangdong').append(temp_html)
 						}
 					}
 				});
 
-			$('#gangdong').hide();
-			$('#gangbuk').hide();
-			$('#gangseo').hide();
-			$('#gwanak').hide();
-			$('#gwangjin').hide();
-			$('#guro').hide();
-			$('#geumcheon').hide();
-			$('#nowon').hide();
-			$('#dobong').hide();
-			$('#dongdaemun').hide();
-			$('#dongjak').hide();
-			$('#mapo').hide();
-			$('#seodaemun').hide();
-			$('#seocho').hide();
-			$('#seongdong').hide();
-			$('#seongbuk').hide();
-			$('#songpa').hide();
-			$('#yangcheon').hide();
-			$('#yeongdeungpo').hide();
-			$('#yongsan').hide();
-			$('#eunpyeong').hide();
-			$('#jongno').hide();
-			$('#jung').hide();
-			$('#jungnang').hide();
-		}
-
-		function q2() {
-			$('#gangnam').hide();
-			$('#gangbuk').hide();
-			$('#gangseo').hide();
-			$('#gwanak').hide();
-			$('#gwangjin').hide();
-			$('#guro').hide();
-			$('#geumcheon').hide();
-			$('#nowon').hide();
-			$('#dobong').hide();
-			$('#dongdaemun').hide();
-			$('#dongjak').hide();
-			$('#mapo').hide();
-			$('#seodaemun').hide();
-			$('#seocho').hide();
-			$('#seongdong').hide();
-			$('#seongbuk').hide();
-			$('#songpa').hide();
-			$('#yangcheon').hide();
-			$('#yeongdeungpo').hide();
-			$('#yongsan').hide();
-			$('#eunpyeong').hide();
-			$('#jongno').hide();
-			$('#jung').hide();
-			$('#jungnang').hide();
+			$('#gangnam').remove();
+			$('#gangbuk').remove();
+			$('#gangseo').remove();
+			$('#gwanak').remove();
+			$('#gwangjin').remove();
+			$('#guro').remove();
+			$('#geumcheon').remove();
+			$('#nowon').remove();
+			$('#dobong').remove();
+			$('#dongdaemun').remove();
+			$('#dongjak').remove();
+			$('#mapo').remove();
+			$('#seodaemun').remove();
+			$('#seocho').remove();
+			$('#seongdong').remove();
+			$('#seongbuk').remove();
+			$('#songpa').remove();
+			$('#yangcheon').remove();
+			$('#yeongdeungpo').remove();
+			$('#yongsan').remove();
+			$('#eunpyeong').remove();
+			$('#jongno').remove();
+			$('#jung').remove();
+			$('#jungnang').remove();
 		}
 
 		function q3() {
-			$('#gangnam').hide();
-			$('#gangdong').hide();
-			$('#gangseo').hide();
-			$('#gwanak').hide();
-			$('#gwangjin').hide();
-			$('#guro').hide();
-			$('#geumcheon').hide();
-			$('#nowon').hide();
-			$('#dobong').hide();
-			$('#dongdaemun').hide();
-			$('#dongjak').hide();
-			$('#mapo').hide();
-			$('#seodaemun').hide();
-			$('#seocho').hide();
-			$('#seongdong').hide();
-			$('#seongbuk').hide();
-			$('#songpa').hide();
-			$('#yangcheon').hide();
-			$('#yeongdeungpo').hide();
-			$('#yongsan').hide();
-			$('#eunpyeong').hide();
-			$('#jongno').hide();
-			$('#jung').hide();
-			$('#jungnang').hide();
+			$.ajax({
+					type: 'GET',
+					url: '/cafe',
+					data: {},
+					success: function (response) {
+						let rows = response['cafe']
+						for (let i = 0; i < rows.length; i++) {
+							let name = rows[i]['name']
+							let add = rows[i]['add']
+							let add_more = rows[i]['add_more']
+							let star = rows[i]['star']
+							let img = rows[i]['image']
+							let temp_html = ``
+							if (add.includes('강북구') == true) {
+								temp_html = `<article>
+												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
+												<header class="cafe_info">
+													<h3><a href="#">${name}</a></h3>
+													<h5>주소 : ${add}</h5>
+													<h5>지번 : ${add_more}</h5>
+													<h5>⭐ ${star}</h5>
+												</header>
+											</article>`
+							}
+							$('#cafe_card_gangbuk').append(temp_html)
+						}
+					}
+				});
+
+			$('#gangnam').remove();
+			$('#gangdong').remove();
+			$('#gangseo').remove();
+			$('#gwanak').remove();
+			$('#gwangjin').remove();
+			$('#guro').remove();
+			$('#geumcheon').remove();
+			$('#nowon').remove();
+			$('#dobong').remove();
+			$('#dongdaemun').remove();
+			$('#dongjak').remove();
+			$('#mapo').remove();
+			$('#seodaemun').remove();
+			$('#seocho').remove();
+			$('#seongdong').remove();
+			$('#seongbuk').remove();
+			$('#songpa').remove();
+			$('#yangcheon').remove();
+			$('#yeongdeungpo').remove();
+			$('#yongsan').remove();
+			$('#eunpyeong').remove();
+			$('#jongno').remove();
+			$('#jung').remove();
+			$('#jungnang').remove();
 		}
 
 		function q4() {
-			$('#gangnam').hide();
-			$('#gangdong').hide();
-			$('#gangbuk').hide();
-			// $('#gangseo').hide();
-			$('#gwanak').hide();
-			$('#gwangjin').hide();
-			$('#guro').hide();
-			$('#geumcheon').hide();
-			$('#nowon').hide();
-			$('#dobong').hide();
-			$('#dongdaemun').hide();
-			$('#dongjak').hide();
-			$('#mapo').hide();
-			$('#seodaemun').hide();
-			$('#seocho').hide();
-			$('#seongdong').hide();
-			$('#seongbuk').hide();
-			$('#songpa').hide();
-			$('#yangcheon').hide();
-			$('#yeongdeungpo').hide();
-			$('#yongsan').hide();
-			$('#eunpyeong').hide();
-			$('#jongno').hide();
-			$('#jung').hide();
-			$('#jungnang').hide();
+			$.ajax({
+					type: 'GET',
+					url: '/cafe',
+					data: {},
+					success: function (response) {
+						let rows = response['cafe']
+						for (let i = 0; i < rows.length; i++) {
+							let name = rows[i]['name']
+							let add = rows[i]['add']
+							let add_more = rows[i]['add_more']
+							let star = rows[i]['star']
+							let img = rows[i]['image']
+							let temp_html = ``
+							if (add.includes('강서구') == true) {
+								temp_html = `<article>
+												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
+												<header class="cafe_info">
+													<h3><a href="#">${name}</a></h3>
+													<h5>주소 : ${add}</h5>
+													<h5>지번 : ${add_more}</h5>
+													<h5>⭐ ${star}</h5>
+												</header>
+											</article>`
+							}
+							$('#cafe_card_gangseo').append(temp_html)
+						}
+					}
+				});
+
+			$('#gangnam').remove();
+			$('#gangdong').remove();
+			$('#gangbuk').remove();
+			$('#gwanak').remove();
+			$('#gwangjin').remove();
+			$('#guro').remove();
+			$('#geumcheon').remove();
+			$('#nowon').remove();
+			$('#dobong').remove();
+			$('#dongdaemun').remove();
+			$('#dongjak').remove();
+			$('#mapo').remove();
+			$('#seodaemun').remove();
+			$('#seocho').remove();
+			$('#seongdong').remove();
+			$('#seongbuk').remove();
+			$('#songpa').remove();
+			$('#yangcheon').remove();
+			$('#yeongdeungpo').remove();
+			$('#yongsan').remove();
+			$('#eunpyeong').remove();
+			$('#jongno').remove();
+			$('#jung').remove();
+			$('#jungnang').remove();
 		}
 
 		function q5() {
-			$('#gangnam').hide();
-			$('#gangdong').hide();
-			$('#gangbuk').hide();
-			$('#gangseo').hide();
-			// $('#gwanak').hide();
-			$('#gwangjin').hide();
-			$('#guro').hide();
-			$('#geumcheon').hide();
-			$('#nowon').hide();
-			$('#dobong').hide();
-			$('#dongdaemun').hide();
-			$('#dongjak').hide();
-			$('#mapo').hide();
-			$('#seodaemun').hide();
-			$('#seocho').hide();
-			$('#seongdong').hide();
-			$('#seongbuk').hide();
-			$('#songpa').hide();
-			$('#yangcheon').hide();
-			$('#yeongdeungpo').hide();
-			$('#yongsan').hide();
-			$('#eunpyeong').hide();
-			$('#jongno').hide();
-			$('#jung').hide();
-			$('#jungnang').hide();
+			$.ajax({
+					type: 'GET',
+					url: '/cafe',
+					data: {},
+					success: function (response) {
+						let rows = response['cafe']
+						for (let i = 0; i < rows.length; i++) {
+							let name = rows[i]['name']
+							let add = rows[i]['add']
+							let add_more = rows[i]['add_more']
+							let star = rows[i]['star']
+							let img = rows[i]['image']
+							let temp_html = ``
+							if (add.includes('관악구') == true) {
+								temp_html = `<article>
+												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
+												<header class="cafe_info">
+													<h3><a href="#">${name}</a></h3>
+													<h5>주소 : ${add}</h5>
+													<h5>지번 : ${add_more}</h5>
+													<h5>⭐ ${star}</h5>
+												</header>
+											</article>`
+							}
+							$('#cafe_card_gwanak').append(temp_html)
+						}
+					}
+				});
+
+			$('#gangnam').remove();
+			$('#gangdong').remove();
+			$('#gangbuk').remove();
+			$('#gangseo').remove();
+			$('#gwangjin').remove();
+			$('#guro').remove();
+			$('#geumcheon').remove();
+			$('#nowon').remove();
+			$('#dobong').remove();
+			$('#dongdaemun').remove();
+			$('#dongjak').remove();
+			$('#mapo').remove();
+			$('#seodaemun').remove();
+			$('#seocho').remove();
+			$('#seongdong').remove();
+			$('#seongbuk').remove();
+			$('#songpa').remove();
+			$('#yangcheon').remove();
+			$('#yeongdeungpo').remove();
+			$('#yongsan').remove();
+			$('#eunpyeong').remove();
+			$('#jongno').remove();
+			$('#jung').remove();
+			$('#jungnang').remove();
 		}
 
 		function q6() {
-			$('#gangdong').hide();
-			$('#gangdong').hide();
-			$('#gangbuk').hide();
-			$('#gangseo').hide();
-			$('#gwanak').hide();
-			// $('#gwangjin').hide();
-			$('#guro').hide();
-			$('#geumcheon').hide();
-			$('#nowon').hide();
-			$('#dobong').hide();
-			$('#dongdaemun').hide();
-			$('#dongjak').hide();
-			$('#mapo').hide();
-			$('#seodaemun').hide();
-			$('#seocho').hide();
-			$('#seongdong').hide();
-			$('#seongbuk').hide();
-			$('#songpa').hide();
-			$('#yangcheon').hide();
-			$('#yeongdeungpo').hide();
-			$('#yongsan').hide();
-			$('#eunpyeong').hide();
-			$('#jongno').hide();
-			$('#jung').hide();
-			$('#jungnang').hide();
+			$.ajax({
+					type: 'GET',
+					url: '/cafe',
+					data: {},
+					success: function (response) {
+						let rows = response['cafe']
+						for (let i = 0; i < rows.length; i++) {
+							let name = rows[i]['name']
+							let add = rows[i]['add']
+							let add_more = rows[i]['add_more']
+							let star = rows[i]['star']
+							let img = rows[i]['image']
+							let temp_html = ``
+							if (add.includes('광진구') == true) {
+								temp_html = `<article>
+												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
+												<header class="cafe_info">
+													<h3><a href="#">${name}</a></h3>
+													<h5>주소 : ${add}</h5>
+													<h5>지번 : ${add_more}</h5>
+													<h5>⭐ ${star}</h5>
+												</header>
+											</article>`
+							}
+							$('#cafe_card_gwangjin').append(temp_html)
+						}
+					}
+				});
+
+			$('#gangnam').remove();
+			$('#gangdong').remove();
+			$('#gangbuk').remove();
+			$('#gangseo').remove();
+			$('#gwanak').remove();
+			$('#guro').remove();
+			$('#geumcheon').remove();
+			$('#nowon').remove();
+			$('#dobong').remove();
+			$('#dongdaemun').remove();
+			$('#dongjak').remove();
+			$('#mapo').remove();
+			$('#seodaemun').remove();
+			$('#seocho').remove();
+			$('#seongdong').remove();
+			$('#seongbuk').remove();
+			$('#songpa').remove();
+			$('#yangcheon').remove();
+			$('#yeongdeungpo').remove();
+			$('#yongsan').remove();
+			$('#eunpyeong').remove();
+			$('#jongno').remove();
+			$('#jung').remove();
+			$('#jungnang').remove();
 		}
 
 		function q7() {
-			$('#gangnam').hide();
-			$('#gangdong').hide();
-			$('#gangbuk').hide();
-			$('#gangseo').hide();
-			$('#gwanak').hide();
-			$('#gwangjin').hide();
-			// $('#guro').hide();
-			$('#geumcheon').hide();
-			$('#nowon').hide();
-			$('#dobong').hide();
-			$('#dongdaemun').hide();
-			$('#dongjak').hide();
-			$('#mapo').hide();
-			$('#seodaemun').hide();
-			$('#seocho').hide();
-			$('#seongdong').hide();
-			$('#seongbuk').hide();
-			$('#songpa').hide();
-			$('#yangcheon').hide();
-			$('#yeongdeungpo').hide();
-			$('#yongsan').hide();
-			$('#eunpyeong').hide();
-			$('#jongno').hide();
-			$('#jung').hide();
-			$('#jungnang').hide();
+			$.ajax({
+					type: 'GET',
+					url: '/cafe',
+					data: {},
+					success: function (response) {
+						let rows = response['cafe']
+						for (let i = 0; i < rows.length; i++) {
+							let name = rows[i]['name']
+							let add = rows[i]['add']
+							let add_more = rows[i]['add_more']
+							let star = rows[i]['star']
+							let img = rows[i]['image']
+							let temp_html = ``
+							if (add.includes('구로구') == true) {
+								temp_html = `<article>
+												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
+												<header class="cafe_info">
+													<h3><a href="#">${name}</a></h3>
+													<h5>주소 : ${add}</h5>
+													<h5>지번 : ${add_more}</h5>
+													<h5>⭐ ${star}</h5>
+												</header>
+											</article>`
+							}
+							$('#cafe_card_guro').append(temp_html)
+						}
+					}
+				});
+
+			$('#gangnam').remove();
+			$('#gangdong').remove();
+			$('#gangbuk').remove();
+			$('#gangseo').remove();
+			$('#gwanak').remove();
+			$('#gwangjin').remove();
+			$('#geumcheon').remove();
+			$('#nowon').remove();
+			$('#dobong').remove();
+			$('#dongdaemun').remove();
+			$('#dongjak').remove();
+			$('#mapo').remove();
+			$('#seodaemun').remove();
+			$('#seocho').remove();
+			$('#seongdong').remove();
+			$('#seongbuk').remove();
+			$('#songpa').remove();
+			$('#yangcheon').remove();
+			$('#yeongdeungpo').remove();
+			$('#yongsan').remove();
+			$('#eunpyeong').remove();
+			$('#jongno').remove();
+			$('#jung').remove();
+			$('#jungnang').remove();
 		}
 
 		function q8() {
-			$('#gangnam').hide();
-			$('#gangdong').hide();
-			$('#gangbuk').hide();
-			$('#gangseo').hide();
-			$('#gwanak').hide();
-			$('#gwangjin').hide();
-			$('#guro').hide();
-			// $('#geumcheon').hide();
-			$('#nowon').hide();
-			$('#dobong').hide();
-			$('#dongdaemun').hide();
-			$('#dongjak').hide();
-			$('#mapo').hide();
-			$('#seodaemun').hide();
-			$('#seocho').hide();
-			$('#seongdong').hide();
-			$('#seongbuk').hide();
-			$('#songpa').hide();
-			$('#yangcheon').hide();
-			$('#yeongdeungpo').hide();
-			$('#yongsan').hide();
-			$('#eunpyeong').hide();
-			$('#jongno').hide();
-			$('#jung').hide();
-			$('#jungnang').hide();
+			$.ajax({
+					type: 'GET',
+					url: '/cafe',
+					data: {},
+					success: function (response) {
+						let rows = response['cafe']
+						for (let i = 0; i < rows.length; i++) {
+							let name = rows[i]['name']
+							let add = rows[i]['add']
+							let add_more = rows[i]['add_more']
+							let star = rows[i]['star']
+							let img = rows[i]['image']
+							let temp_html = ``
+							if (add.includes('금천구') == true) {
+								temp_html = `<article>
+												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
+												<header class="cafe_info">
+													<h3><a href="#">${name}</a></h3>
+													<h5>주소 : ${add}</h5>
+													<h5>지번 : ${add_more}</h5>
+													<h5>⭐ ${star}</h5>
+												</header>
+											</article>`
+							}
+							$('#cafe_card_geumcheon').append(temp_html)
+						}
+					}
+				});
+
+			$('#gangnam').remove();
+			$('#gangdong').remove();
+			$('#gangbuk').remove();
+			$('#gangseo').remove();
+			$('#gwanak').remove();
+			$('#gwangjin').remove();
+			$('#guro').remove();
+			$('#nowon').remove();
+			$('#dobong').remove();
+			$('#dongdaemun').remove();
+			$('#dongjak').remove();
+			$('#mapo').remove();
+			$('#seodaemun').remove();
+			$('#seocho').remove();
+			$('#seongdong').remove();
+			$('#seongbuk').remove();
+			$('#songpa').remove();
+			$('#yangcheon').remove();
+			$('#yeongdeungpo').remove();
+			$('#yongsan').remove();
+			$('#eunpyeong').remove();
+			$('#jongno').remove();
+			$('#jung').remove();
+			$('#jungnang').remove();
 		}
 
 		function q9() {
-			$('#gangnam').hide();
-			$('#gangdong').hide();
-			$('#gangbuk').hide();
-			$('#gangseo').hide();
-			$('#gwanak').hide();
-			$('#gwangjin').hide();
-			$('#guro').hide();
-			$('#geumcheon').hide();
-			// $('#nowon').hide();
-			$('#dobong').hide();
-			$('#dongdaemun').hide();
-			$('#dongjak').hide();
-			$('#mapo').hide();
-			$('#seodaemun').hide();
-			$('#seocho').hide();
-			$('#seongdong').hide();
-			$('#seongbuk').hide();
-			$('#songpa').hide();
-			$('#yangcheon').hide();
-			$('#yeongdeungpo').hide();
-			$('#yongsan').hide();
-			$('#eunpyeong').hide();
-			$('#jongno').hide();
-			$('#jung').hide();
-			$('#jungnang').hide();
+			$.ajax({
+					type: 'GET',
+					url: '/cafe',
+					data: {},
+					success: function (response) {
+						let rows = response['cafe']
+						for (let i = 0; i < rows.length; i++) {
+							let name = rows[i]['name']
+							let add = rows[i]['add']
+							let add_more = rows[i]['add_more']
+							let star = rows[i]['star']
+							let img = rows[i]['image']
+							let temp_html = ``
+							if (add.includes('노원구') == true) {
+								temp_html = `<article>
+												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
+												<header class="cafe_info">
+													<h3><a href="#">${name}</a></h3>
+													<h5>주소 : ${add}</h5>
+													<h5>지번 : ${add_more}</h5>
+													<h5>⭐ ${star}</h5>
+												</header>
+											</article>`
+							}
+							$('#cafe_card_nowon').append(temp_html)
+						}
+					}
+				});
+
+			$('#gangnam').remove();
+			$('#gangdong').remove();
+			$('#gangbuk').remove();
+			$('#gangseo').remove();
+			$('#gwanak').remove();
+			$('#gwangjin').remove();
+			$('#guro').remove();
+			$('#geumcheon').remove();
+			$('#dobong').remove();
+			$('#dongdaemun').remove();
+			$('#dongjak').remove();
+			$('#mapo').remove();
+			$('#seodaemun').remove();
+			$('#seocho').remove();
+			$('#seongdong').remove();
+			$('#seongbuk').remove();
+			$('#songpa').remove();
+			$('#yangcheon').remove();
+			$('#yeongdeungpo').remove();
+			$('#yongsan').remove();
+			$('#eunpyeong').remove();
+			$('#jongno').remove();
+			$('#jung').remove();
+			$('#jungnang').remove();
 		}
 
 		function q10() {
-			$('#gangnam').hide();
-			$('#gangdong').hide();
-			$('#gangbuk').hide();
-			$('#gangseo').hide();
-			$('#gwanak').hide();
-			$('#gwangjin').hide();
-			$('#guro').hide();
-			$('#geumcheon').hide();
-			$('#nowon').hide();
-			// $('#dobong').hide();
-			$('#dongdaemun').hide();
-			$('#dongjak').hide();
-			$('#mapo').hide();
-			$('#seodaemun').hide();
-			$('#seocho').hide();
-			$('#seongdong').hide();
-			$('#seongbuk').hide();
-			$('#songpa').hide();
-			$('#yangcheon').hide();
-			$('#yeongdeungpo').hide();
-			$('#yongsan').hide();
-			$('#eunpyeong').hide();
-			$('#jongno').hide();
-			$('#jung').hide();
-			$('#jungnang').hide();
+			$.ajax({
+					type: 'GET',
+					url: '/cafe',
+					data: {},
+					success: function (response) {
+						let rows = response['cafe']
+						for (let i = 0; i < rows.length; i++) {
+							let name = rows[i]['name']
+							let add = rows[i]['add']
+							let add_more = rows[i]['add_more']
+							let star = rows[i]['star']
+							let img = rows[i]['image']
+							let temp_html = ``
+							if (add.includes('도봉구') == true) {
+								temp_html = `<article>
+												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
+												<header class="cafe_info">
+													<h3><a href="#">${name}</a></h3>
+													<h5>주소 : ${add}</h5>
+													<h5>지번 : ${add_more}</h5>
+													<h5>⭐ ${star}</h5>
+												</header>
+											</article>`
+							}
+							$('#cafe_card_dobong').append(temp_html)
+						}
+					}
+				});
+
+			$('#gangnam').remove();
+			$('#gangdong').remove();
+			$('#gangbuk').remove();
+			$('#gangseo').remove();
+			$('#gwanak').remove();
+			$('#gwangjin').remove();
+			$('#guro').remove();
+			$('#geumcheon').remove();
+			$('#nowon').remove();
+			$('#dongdaemun').remove();
+			$('#dongjak').remove();
+			$('#mapo').remove();
+			$('#seodaemun').remove();
+			$('#seocho').remove();
+			$('#seongdong').remove();
+			$('#seongbuk').remove();
+			$('#songpa').remove();
+			$('#yangcheon').remove();
+			$('#yeongdeungpo').remove();
+			$('#yongsan').remove();
+			$('#eunpyeong').remove();
+			$('#jongno').remove();
+			$('#jung').remove();
+			$('#jungnang').remove();
 		}
 
 		function q11() {
-			$('#gangdong').hide();
-			$('#gangdong').hide();
-			$('#gangbuk').hide();
-			$('#gangseo').hide();
-			$('#gwanak').hide();
-			$('#gwangjin').hide();
-			$('#guro').hide();
-			$('#geumcheon').hide();
-			$('#nowon').hide();
-			$('#dobong').hide();
-			// $('#dongdaemun').hide();
-			$('#dongjak').hide();
-			$('#mapo').hide();
-			$('#seodaemun').hide();
-			$('#seocho').hide();
-			$('#seongdong').hide();
-			$('#seongbuk').hide();
-			$('#songpa').hide();
-			$('#yangcheon').hide();
-			$('#yeongdeungpo').hide();
-			$('#yongsan').hide();
-			$('#eunpyeong').hide();
-			$('#jongno').hide();
-			$('#jung').hide();
-			$('#jungnang').hide();
+			$.ajax({
+					type: 'GET',
+					url: '/cafe',
+					data: {},
+					success: function (response) {
+						let rows = response['cafe']
+						for (let i = 0; i < rows.length; i++) {
+							let name = rows[i]['name']
+							let add = rows[i]['add']
+							let add_more = rows[i]['add_more']
+							let star = rows[i]['star']
+							let img = rows[i]['image']
+							let temp_html = ``
+							if (add.includes('동대문구') == true) {
+								temp_html = `<article>
+												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
+												<header class="cafe_info">
+													<h3><a href="#">${name}</a></h3>
+													<h5>주소 : ${add}</h5>
+													<h5>지번 : ${add_more}</h5>
+													<h5>⭐ ${star}</h5>
+												</header>
+											</article>`
+							}
+							$('#cafe_card_dongdaemun').append(temp_html)
+						}
+					}
+				});
+
+			$('#gangnam').remove();
+			$('#gangdong').remove();
+			$('#gangbuk').remove();
+			$('#gangseo').remove();
+			$('#gwanak').remove();
+			$('#gwangjin').remove();
+			$('#guro').remove();
+			$('#geumcheon').remove();
+			$('#nowon').remove();
+			$('#dobong').remove();
+			$('#dongjak').remove();
+			$('#mapo').remove();
+			$('#seodaemun').remove();
+			$('#seocho').remove();
+			$('#seongdong').remove();
+			$('#seongbuk').remove();
+			$('#songpa').remove();
+			$('#yangcheon').remove();
+			$('#yeongdeungpo').remove();
+			$('#yongsan').remove();
+			$('#eunpyeong').remove();
+			$('#jongno').remove();
+			$('#jung').remove();
+			$('#jungnang').remove();
 		}
 
 		function q12() {
-			$('#gangnam').hide();
-			$('#gangdong').hide();
-			$('#gangbuk').hide();
-			$('#gangseo').hide();
-			$('#gwanak').hide();
-			$('#gwangjin').hide();
-			$('#guro').hide();
-			$('#geumcheon').hide();
-			$('#nowon').hide();
-			$('#dobong').hide();
-			$('#dongdaemun').hide();
-			// $('#dongjak').hide();
-			$('#mapo').hide();
-			$('#seodaemun').hide();
-			$('#seocho').hide();
-			$('#seongdong').hide();
-			$('#seongbuk').hide();
-			$('#songpa').hide();
-			$('#yangcheon').hide();
-			$('#yeongdeungpo').hide();
-			$('#yongsan').hide();
-			$('#eunpyeong').hide();
-			$('#jongno').hide();
-			$('#jung').hide();
-			$('#jungnang').hide();
+			$.ajax({
+					type: 'GET',
+					url: '/cafe',
+					data: {},
+					success: function (response) {
+						let rows = response['cafe']
+						for (let i = 0; i < rows.length; i++) {
+							let name = rows[i]['name']
+							let add = rows[i]['add']
+							let add_more = rows[i]['add_more']
+							let star = rows[i]['star']
+							let img = rows[i]['image']
+							let temp_html = ``
+							if (add.includes('동작구') == true) {
+								temp_html = `<article>
+												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
+												<header class="cafe_info">
+													<h3><a href="#">${name}</a></h3>
+													<h5>주소 : ${add}</h5>
+													<h5>지번 : ${add_more}</h5>
+													<h5>⭐ ${star}</h5>
+												</header>
+											</article>`
+							}
+							$('#cafe_card_dongjak').append(temp_html)
+						}
+					}
+				});
+
+			$('#gangnam').remove();
+			$('#gangdong').remove();
+			$('#gangbuk').remove();
+			$('#gangseo').remove();
+			$('#gwanak').remove();
+			$('#gwangjin').remove();
+			$('#guro').remove();
+			$('#geumcheon').remove();
+			$('#nowon').remove();
+			$('#dobong').remove();
+			$('#dongdaemun').remove();
+			$('#mapo').remove();
+			$('#seodaemun').remove();
+			$('#seocho').remove();
+			$('#seongdong').remove();
+			$('#seongbuk').remove();
+			$('#songpa').remove();
+			$('#yangcheon').remove();
+			$('#yeongdeungpo').remove();
+			$('#yongsan').remove();
+			$('#eunpyeong').remove();
+			$('#jongno').remove();
+			$('#jung').remove();
+			$('#jungnang').remove();
 		}
 
 		function q13() {
-			$('#gangnam').hide();
-			$('#gangdong').hide();
-			$('#gangbuk').hide();
-			$('#gangseo').hide();
-			$('#gwanak').hide();
-			$('#gwangjin').hide();
-			$('#guro').hide();
-			$('#geumcheon').hide();
-			$('#nowon').hide();
-			$('#dobong').hide();
-			$('#dongdaemun').hide();
-			$('#dongjak').hide();
-			// $('#mapo').hide();
-			$('#seodaemun').hide();
-			$('#seocho').hide();
-			$('#seongdong').hide();
-			$('#seongbuk').hide();
-			$('#songpa').hide();
-			$('#yangcheon').hide();
-			$('#yeongdeungpo').hide();
-			$('#yongsan').hide();
-			$('#eunpyeong').hide();
-			$('#jongno').hide();
-			$('#jung').hide();
-			$('#jungnang').hide();
+			$.ajax({
+					type: 'GET',
+					url: '/cafe',
+					data: {},
+					success: function (response) {
+						let rows = response['cafe']
+						for (let i = 0; i < rows.length; i++) {
+							let name = rows[i]['name']
+							let add = rows[i]['add']
+							let add_more = rows[i]['add_more']
+							let star = rows[i]['star']
+							let img = rows[i]['image']
+							let temp_html = ``
+							if (add.includes('마포구') == true) {
+								temp_html = `<article>
+												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
+												<header class="cafe_info">
+													<h3><a href="#">${name}</a></h3>
+													<h5>주소 : ${add}</h5>
+													<h5>지번 : ${add_more}</h5>
+													<h5>⭐ ${star}</h5>
+												</header>
+											</article>`
+							}
+							$('#cafe_card_mapo').append(temp_html)
+						}
+					}
+				});
+
+			$('#gangnam').remove();
+			$('#gangdong').remove();
+			$('#gangbuk').remove();
+			$('#gangseo').remove();
+			$('#gwanak').remove();
+			$('#gwangjin').remove();
+			$('#guro').remove();
+			$('#geumcheon').remove();
+			$('#nowon').remove();
+			$('#dobong').remove();
+			$('#dongdaemun').remove();
+			$('#dongjak').remove();
+			$('#seodaemun').remove();
+			$('#seocho').remove();
+			$('#seongdong').remove();
+			$('#seongbuk').remove();
+			$('#songpa').remove();
+			$('#yangcheon').remove();
+			$('#yeongdeungpo').remove();
+			$('#yongsan').remove();
+			$('#eunpyeong').remove();
+			$('#jongno').remove();
+			$('#jung').remove();
+			$('#jungnang').remove();
 		}
 
 		function q14() {
-			$('#gangnam').hide();
-			$('#gangdong').hide();
-			$('#gangbuk').hide();
-			$('#gangseo').hide();
-			$('#gwanak').hide();
-			$('#gwangjin').hide();
-			$('#guro').hide();
-			$('#geumcheon').hide();
-			$('#nowon').hide();
-			$('#dobong').hide();
-			$('#dongdaemun').hide();
-			$('#dongjak').hide();
-			$('#mapo').hide();
-			// $('#seodaemun').hide();
-			$('#seocho').hide();
-			$('#seongdong').hide();
-			$('#seongbuk').hide();
-			$('#songpa').hide();
-			$('#yangcheon').hide();
-			$('#yeongdeungpo').hide();
-			$('#yongsan').hide();
-			$('#eunpyeong').hide();
-			$('#jongno').hide();
-			$('#jung').hide();
-			$('#jungnang').hide();
+			$.ajax({
+					type: 'GET',
+					url: '/cafe',
+					data: {},
+					success: function (response) {
+						let rows = response['cafe']
+						for (let i = 0; i < rows.length; i++) {
+							let name = rows[i]['name']
+							let add = rows[i]['add']
+							let add_more = rows[i]['add_more']
+							let star = rows[i]['star']
+							let img = rows[i]['image']
+							let temp_html = ``
+							if (add.includes('서대문구') == true) {
+								temp_html = `<article>
+												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
+												<header class="cafe_info">
+													<h3><a href="#">${name}</a></h3>
+													<h5>주소 : ${add}</h5>
+													<h5>지번 : ${add_more}</h5>
+													<h5>⭐ ${star}</h5>
+												</header>
+											</article>`
+							}
+							$('#cafe_card_seodaemun').append(temp_html)
+						}
+					}
+				});
+
+			$('#gangnam').remove();
+			$('#gangdong').remove();
+			$('#gangbuk').remove();
+			$('#gangseo').remove();
+			$('#gwanak').remove();
+			$('#gwangjin').remove();
+			$('#guro').remove();
+			$('#geumcheon').remove();
+			$('#nowon').remove();
+			$('#dobong').remove();
+			$('#dongdaemun').remove();
+			$('#dongjak').remove();
+			$('#mapo').remove();
+			$('#seocho').remove();
+			$('#seongdong').remove();
+			$('#seongbuk').remove();
+			$('#songpa').remove();
+			$('#yangcheon').remove();
+			$('#yeongdeungpo').remove();
+			$('#yongsan').remove();
+			$('#eunpyeong').remove();
+			$('#jongno').remove();
+			$('#jung').remove();
+			$('#jungnang').remove();
 		}
 
 		function q15() {
-			$('#gangnam').hide();
-			$('#gangdong').hide();
-			$('#gangbuk').hide();
-			$('#gangseo').hide();
-			$('#gwanak').hide();
-			$('#gwangjin').hide();
-			$('#guro').hide();
-			$('#geumcheon').hide();
-			$('#nowon').hide();
-			$('#dobong').hide();
-			$('#dongdaemun').hide();
-			$('#dongjak').hide();
-			$('#mapo').hide();
-			$('#seodaemun').hide();
-			// $('#seocho').hide();
-			$('#seongdong').hide();
-			$('#seongbuk').hide();
-			$('#songpa').hide();
-			$('#yangcheon').hide();
-			$('#yeongdeungpo').hide();
-			$('#yongsan').hide();
-			$('#eunpyeong').hide();
-			$('#jongno').hide();
-			$('#jung').hide();
-			$('#jungnang').hide();
+			$.ajax({
+					type: 'GET',
+					url: '/cafe',
+					data: {},
+					success: function (response) {
+						let rows = response['cafe']
+						for (let i = 0; i < rows.length; i++) {
+							let name = rows[i]['name']
+							let add = rows[i]['add']
+							let add_more = rows[i]['add_more']
+							let star = rows[i]['star']
+							let img = rows[i]['image']
+							let temp_html = ``
+							if (add.includes('서초구') == true) {
+								temp_html = `<article>
+												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
+												<header class="cafe_info">
+													<h3><a href="#">${name}</a></h3>
+													<h5>주소 : ${add}</h5>
+													<h5>지번 : ${add_more}</h5>
+													<h5>⭐ ${star}</h5>
+												</header>
+											</article>`
+							}
+							$('#cafe_card_seocho').append(temp_html)
+						}
+					}
+				});
+
+			$('#gangnam').remove();
+			$('#gangdong').remove();
+			$('#gangbuk').remove();
+			$('#gangseo').remove();
+			$('#gwanak').remove();
+			$('#gwangjin').remove();
+			$('#guro').remove();
+			$('#geumcheon').remove();
+			$('#nowon').remove();
+			$('#dobong').remove();
+			$('#dongdaemun').remove();
+			$('#dongjak').remove();
+			$('#mapo').remove();
+			$('#seodaemun').remove();
+			$('#seongdong').remove();
+			$('#seongbuk').remove();
+			$('#songpa').remove();
+			$('#yangcheon').remove();
+			$('#yeongdeungpo').remove();
+			$('#yongsan').remove();
+			$('#eunpyeong').remove();
+			$('#jongno').remove();
+			$('#jung').remove();
+			$('#jungnang').remove();
 		}
 
 		function q16() {
-			$('#gangnam').hide();
-			$('#gangdong').hide();
-			$('#gangbuk').hide();
-			$('#gangseo').hide();
-			$('#gwanak').hide();
-			$('#gwangjin').hide();
-			$('#guro').hide();
-			$('#geumcheon').hide();
-			$('#nowon').hide();
-			$('#dobong').hide();
-			$('#dongdaemun').hide();
-			$('#dongjak').hide();
-			$('#mapo').hide();
-			$('#seodaemun').hide();
-			$('#seocho').hide();
-			// $('#seongdong').hide();
-			$('#seongbuk').hide();
-			$('#songpa').hide();
-			$('#yangcheon').hide();
-			$('#yeongdeungpo').hide();
-			$('#yongsan').hide();
-			$('#eunpyeong').hide();
-			$('#jongno').hide();
-			$('#jung').hide();
-			$('#jungnang').hide();
+			$.ajax({
+					type: 'GET',
+					url: '/cafe',
+					data: {},
+					success: function (response) {
+						let rows = response['cafe']
+						for (let i = 0; i < rows.length; i++) {
+							let name = rows[i]['name']
+							let add = rows[i]['add']
+							let add_more = rows[i]['add_more']
+							let star = rows[i]['star']
+							let img = rows[i]['image']
+							let temp_html = ``
+							if (add.includes('성동구') == true) {
+								temp_html = `<article>
+												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
+												<header class="cafe_info">
+													<h3><a href="#">${name}</a></h3>
+													<h5>주소 : ${add}</h5>
+													<h5>지번 : ${add_more}</h5>
+													<h5>⭐ ${star}</h5>
+												</header>
+											</article>`
+							}
+							$('#cafe_card_seongdong').append(temp_html)
+						}
+					}
+				});
+
+			$('#gangnam').remove();
+			$('#gangdong').remove();
+			$('#gangbuk').remove();
+			$('#gangseo').remove();
+			$('#gwanak').remove();
+			$('#gwangjin').remove();
+			$('#guro').remove();
+			$('#geumcheon').remove();
+			$('#nowon').remove();
+			$('#dobong').remove();
+			$('#dongdaemun').remove();
+			$('#dongjak').remove();
+			$('#mapo').remove();
+			$('#seodaemun').remove();
+			$('#seocho').remove();
+			$('#seongbuk').remove();
+			$('#songpa').remove();
+			$('#yangcheon').remove();
+			$('#yeongdeungpo').remove();
+			$('#yongsan').remove();
+			$('#eunpyeong').remove();
+			$('#jongno').remove();
+			$('#jung').remove();
+			$('#jungnang').remove();
 		}
 
 		function q17() {
-			$('#gangnam').hide();
-			$('#gangdong').hide();
-			$('#gangbuk').hide();
-			$('#gangseo').hide();
-			$('#gwanak').hide();
-			$('#gwangjin').hide();
-			$('#guro').hide();
-			$('#geumcheon').hide();
-			$('#nowon').hide();
-			$('#dobong').hide();
-			$('#dongdaemun').hide();
-			$('#dongjak').hide();
-			$('#mapo').hide();
-			$('#seodaemun').hide();
-			$('#seocho').hide();
-			$('#seongdong').hide();
-			// $('#seongbuk').hide();
-			$('#songpa').hide();
-			$('#yangcheon').hide();
-			$('#yeongdeungpo').hide();
-			$('#yongsan').hide();
-			$('#eunpyeong').hide();
-			$('#jongno').hide();
-			$('#jung').hide();
-			$('#jungnang').hide();
+			$.ajax({
+					type: 'GET',
+					url: '/cafe',
+					data: {},
+					success: function (response) {
+						let rows = response['cafe']
+						for (let i = 0; i < rows.length; i++) {
+							let name = rows[i]['name']
+							let add = rows[i]['add']
+							let add_more = rows[i]['add_more']
+							let star = rows[i]['star']
+							let img = rows[i]['image']
+							let temp_html = ``
+							if (add.includes('성북구') == true) {
+								temp_html = `<article>
+												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
+												<header class="cafe_info">
+													<h3><a href="#">${name}</a></h3>
+													<h5>주소 : ${add}</h5>
+													<h5>지번 : ${add_more}</h5>
+													<h5>⭐ ${star}</h5>
+												</header>
+											</article>`
+							}
+							$('#cafe_card_seongbuk').append(temp_html)
+						}
+					}
+				});
+
+			$('#gangnam').remove();
+			$('#gangdong').remove();
+			$('#gangbuk').remove();
+			$('#gangseo').remove();
+			$('#gwanak').remove();
+			$('#gwangjin').remove();
+			$('#guro').remove();
+			$('#geumcheon').remove();
+			$('#nowon').remove();
+			$('#dobong').remove();
+			$('#dongdaemun').remove();
+			$('#dongjak').remove();
+			$('#mapo').remove();
+			$('#seodaemun').remove();
+			$('#seocho').remove();
+			$('#seongdong').remove();
+			$('#songpa').remove();
+			$('#yangcheon').remove();
+			$('#yeongdeungpo').remove();
+			$('#yongsan').remove();
+			$('#eunpyeong').remove();
+			$('#jongno').remove();
+			$('#jung').remove();
+			$('#jungnang').remove();
 		}
 
 		function q18() {
-			$('#gangnam').hide();
-			$('#gangdong').hide();
-			$('#gangbuk').hide();
-			$('#gangseo').hide();
-			$('#gwanak').hide();
-			$('#gwangjin').hide();
-			$('#guro').hide();
-			$('#geumcheon').hide();
-			$('#nowon').hide();
-			$('#dobong').hide();
-			$('#dongdaemun').hide();
-			$('#dongjak').hide();
-			$('#mapo').hide();
-			$('#seodaemun').hide();
-			$('#seocho').hide();
-			$('#seongdong').hide();
-			$('#seongbuk').hide();
-			// $('#songpa').hide();
-			$('#yangcheon').hide();
-			$('#yeongdeungpo').hide();
-			$('#yongsan').hide();
-			$('#eunpyeong').hide();
-			$('#jongno').hide();
-			$('#jung').hide();
-			$('#jungnang').hide();
+			$.ajax({
+					type: 'GET',
+					url: '/cafe',
+					data: {},
+					success: function (response) {
+						let rows = response['cafe']
+						for (let i = 0; i < rows.length; i++) {
+							let name = rows[i]['name']
+							let add = rows[i]['add']
+							let add_more = rows[i]['add_more']
+							let star = rows[i]['star']
+							let img = rows[i]['image']
+							let temp_html = ``
+							if (add.includes('송파구') == true) {
+								temp_html = `<article>
+												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
+												<header class="cafe_info">
+													<h3><a href="#">${name}</a></h3>
+													<h5>주소 : ${add}</h5>
+													<h5>지번 : ${add_more}</h5>
+													<h5>⭐ ${star}</h5>
+												</header>
+											</article>`
+							}
+							$('#cafe_card_songpa').append(temp_html)
+						}
+					}
+				});
+
+			$('#gangnam').remove();
+			$('#gangdong').remove();
+			$('#gangbuk').remove();
+			$('#gangseo').remove();
+			$('#gwanak').remove();
+			$('#gwangjin').remove();
+			$('#guro').remove();
+			$('#geumcheon').remove();
+			$('#nowon').remove();
+			$('#dobong').remove();
+			$('#dongdaemun').remove();
+			$('#dongjak').remove();
+			$('#mapo').remove();
+			$('#seodaemun').remove();
+			$('#seocho').remove();
+			$('#seongdong').remove();
+			$('#seongbuk').remove();
+			$('#yangcheon').remove();
+			$('#yeongdeungpo').remove();
+			$('#yongsan').remove();
+			$('#eunpyeong').remove();
+			$('#jongno').remove();
+			$('#jung').remove();
+			$('#jungnang').remove();
 		}
 
 		function q19() {
-			$('#gangnam').hide();
-			$('#gangdong').hide();
-			$('#gangbuk').hide();
-			$('#gangseo').hide();
-			$('#gwanak').hide();
-			$('#gwangjin').hide();
-			$('#guro').hide();
-			$('#geumcheon').hide();
-			$('#nowon').hide();
-			$('#dobong').hide();
-			$('#dongdaemun').hide();
-			$('#dongjak').hide();
-			$('#mapo').hide();
-			$('#seodaemun').hide();
-			$('#seocho').hide();
-			$('#seongdong').hide();
-			$('#seongbuk').hide();
-			$('#songpa').hide();
-			// $('#yangcheon').hide();
-			$('#yeongdeungpo').hide();
-			$('#yongsan').hide();
-			$('#eunpyeong').hide();
-			$('#jongno').hide();
-			$('#jung').hide();
-			$('#jungnang').hide();
+			$.ajax({
+					type: 'GET',
+					url: '/cafe',
+					data: {},
+					success: function (response) {
+						let rows = response['cafe']
+						for (let i = 0; i < rows.length; i++) {
+							let name = rows[i]['name']
+							let add = rows[i]['add']
+							let add_more = rows[i]['add_more']
+							let star = rows[i]['star']
+							let img = rows[i]['image']
+							let temp_html = ``
+							if (add.includes('양천구') == true) {
+								temp_html = `<article>
+												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
+												<header class="cafe_info">
+													<h3><a href="#">${name}</a></h3>
+													<h5>주소 : ${add}</h5>
+													<h5>지번 : ${add_more}</h5>
+													<h5>⭐ ${star}</h5>
+												</header>
+											</article>`
+							}
+							$('#cafe_card_yangcheon').append(temp_html)
+						}
+					}
+				});
+
+			$('#gangnam').remove();
+			$('#gangdong').remove();
+			$('#gangbuk').remove();
+			$('#gangseo').remove();
+			$('#gwanak').remove();
+			$('#gwangjin').remove();
+			$('#guro').remove();
+			$('#geumcheon').remove();
+			$('#nowon').remove();
+			$('#dobong').remove();
+			$('#dongdaemun').remove();
+			$('#dongjak').remove();
+			$('#mapo').remove();
+			$('#seodaemun').remove();
+			$('#seocho').remove();
+			$('#seongdong').remove();
+			$('#seongbuk').remove();
+			$('#songpa').remove();
+			$('#yeongdeungpo').remove();
+			$('#yongsan').remove();
+			$('#eunpyeong').remove();
+			$('#jongno').remove();
+			$('#jung').remove();
+			$('#jungnang').remove();
 		}
 
 		function q20() {
-			$('#gangnam').hide();
-			$('#gangdong').hide();
-			$('#gangbuk').hide();
-			$('#gangseo').hide();
-			$('#gwanak').hide();
-			$('#gwangjin').hide();
-			$('#guro').hide();
-			$('#geumcheon').hide();
-			$('#nowon').hide();
-			$('#dobong').hide();
-			$('#dongdaemun').hide();
-			$('#dongjak').hide();
-			$('#mapo').hide();
-			$('#seodaemun').hide();
-			$('#seocho').hide();
-			$('#seongdong').hide();
-			$('#seongbuk').hide();
-			$('#songpa').hide();
-			$('#yangcheon').hide();
-			// $('#yeongdeungpo').hide();
-			$('#yongsan').hide();
-			$('#eunpyeong').hide();
-			$('#jongno').hide();
-			$('#jung').hide();
-			$('#jungnang').hide();
+			$.ajax({
+					type: 'GET',
+					url: '/cafe',
+					data: {},
+					success: function (response) {
+						let rows = response['cafe']
+						for (let i = 0; i < rows.length; i++) {
+							let name = rows[i]['name']
+							let add = rows[i]['add']
+							let add_more = rows[i]['add_more']
+							let star = rows[i]['star']
+							let img = rows[i]['image']
+							let temp_html = ``
+							if (add.includes('영등포구') == true) {
+								temp_html = `<article>
+												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
+												<header class="cafe_info">
+													<h3><a href="#">${name}</a></h3>
+													<h5>주소 : ${add}</h5>
+													<h5>지번 : ${add_more}</h5>
+													<h5>⭐ ${star}</h5>
+												</header>
+											</article>`
+							}
+							$('#cafe_card_yeongdeungpo').append(temp_html)
+						}
+					}
+				});
+
+			$('#gangnam').remove();
+			$('#gangdong').remove();
+			$('#gangbuk').remove();
+			$('#gangseo').remove();
+			$('#gwanak').remove();
+			$('#gwangjin').remove();
+			$('#guro').remove();
+			$('#geumcheon').remove();
+			$('#nowon').remove();
+			$('#dobong').remove();
+			$('#dongdaemun').remove();
+			$('#dongjak').remove();
+			$('#mapo').remove();
+			$('#seodaemun').remove();
+			$('#seocho').remove();
+			$('#seongdong').remove();
+			$('#seongbuk').remove();
+			$('#songpa').remove();
+			$('#yangcheon').remove();
+			$('#yongsan').remove();
+			$('#eunpyeong').remove();
+			$('#jongno').remove();
+			$('#jung').remove();
+			$('#jungnang').remove();
 		}
 
 		function q21() {
-			$('#gangdong').hide();
-			$('#gangdong').hide();
-			$('#gangbuk').hide();
-			$('#gangseo').hide();
-			$('#gwanak').hide();
-			$('#gwangjin').hide();
-			$('#guro').hide();
-			$('#geumcheon').hide();
-			$('#nowon').hide();
-			$('#dobong').hide();
-			$('#dongdaemun').hide();
-			$('#dongjak').hide();
-			$('#mapo').hide();
-			$('#seodaemun').hide();
-			$('#seocho').hide();
-			$('#seongdong').hide();
-			$('#seongbuk').hide();
-			$('#songpa').hide();
-			$('#yangcheon').hide();
-			$('#yeongdeungpo').hide();
-			// $('#yongsan').hide();
-			$('#eunpyeong').hide();
-			$('#jongno').hide();
-			$('#jung').hide();
-			$('#jungnang').hide();
+			$.ajax({
+					type: 'GET',
+					url: '/cafe',
+					data: {},
+					success: function (response) {
+						let rows = response['cafe']
+						for (let i = 0; i < rows.length; i++) {
+							let name = rows[i]['name']
+							let add = rows[i]['add']
+							let add_more = rows[i]['add_more']
+							let star = rows[i]['star']
+							let img = rows[i]['image']
+							let temp_html = ``
+							if (add.includes('용산구') == true) {
+								temp_html = `<article>
+												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
+												<header class="cafe_info">
+													<h3><a href="#">${name}</a></h3>
+													<h5>주소 : ${add}</h5>
+													<h5>지번 : ${add_more}</h5>
+													<h5>⭐ ${star}</h5>
+												</header>
+											</article>`
+							}
+							$('#cafe_card_yongsan').append(temp_html)
+						}
+					}
+				});
+
+			$('#gangnam').remove();
+			$('#gangdong').remove();
+			$('#gangbuk').remove();
+			$('#gangseo').remove();
+			$('#gwanak').remove();
+			$('#gwangjin').remove();
+			$('#guro').remove();
+			$('#geumcheon').remove();
+			$('#nowon').remove();
+			$('#dobong').remove();
+			$('#dongdaemun').remove();
+			$('#dongjak').remove();
+			$('#mapo').remove();
+			$('#seodaemun').remove();
+			$('#seocho').remove();
+			$('#seongdong').remove();
+			$('#seongbuk').remove();
+			$('#songpa').remove();
+			$('#yangcheon').remove();
+			$('#yeongdeungpo').remove();
+			$('#eunpyeong').remove();
+			$('#jongno').remove();
+			$('#jung').remove();
+			$('#jungnang').remove();
 		}
 
 		function q22() {
-			$('#gangnam').hide();
-			$('#gangdong').hide();
-			$('#gangbuk').hide();
-			$('#gangseo').hide();
-			$('#gwanak').hide();
-			$('#gwangjin').hide();
-			$('#guro').hide();
-			$('#geumcheon').hide();
-			$('#nowon').hide();
-			$('#dobong').hide();
-			$('#dongdaemun').hide();
-			$('#dongjak').hide();
-			$('#mapo').hide();
-			$('#seodaemun').hide();
-			$('#seocho').hide();
-			$('#seongdong').hide();
-			$('#seongbuk').hide();
-			$('#songpa').hide();
-			$('#yangcheon').hide();
-			$('#yeongdeungpo').hide();
-			$('#yongsan').hide();
-			// $('#eunpyeong').hide();
-			$('#jongno').hide();
-			$('#jung').hide();
-			$('#jungnang').hide();
+			$('#gangnam').remove();
+			$('#gangdong').remove();
+			$('#gangbuk').remove();
+			$('#gangseo').remove();
+			$('#gwanak').remove();
+			$('#gwangjin').remove();
+			$('#guro').remove();
+			$('#geumcheon').remove();
+			$('#nowon').remove();
+			$('#dobong').remove();
+			$('#dongdaemun').remove();
+			$('#dongjak').remove();
+			$('#mapo').remove();
+			$('#seodaemun').remove();
+			$('#seocho').remove();
+			$('#seongdong').remove();
+			$('#seongbuk').remove();
+			$('#songpa').remove();
+			$('#yangcheon').remove();
+			$('#yeongdeungpo').remove();
+			$('#yongsan').remove();
+			$('#jongno').remove();
+			$('#jung').remove();
+			$('#jungnang').remove();
+
+			$.ajax({
+					type: 'GET',
+					url: '/cafe',
+					data: {},
+					success: function (response) {
+						let rows = response['cafe']
+						for (let i = 0; i < rows.length; i++) {
+							let name = rows[i]['name']
+							let add = rows[i]['add']
+							let add_more = rows[i]['add_more']
+							let star = rows[i]['star']
+							let img = rows[i]['image']
+							let temp_html = ``
+							if (add.includes('은평구') == true) {
+								temp_html = `<article>
+												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
+												<header class="cafe_info">
+													<h3><a href="#">${name}</a></h3>
+													<h5>주소 : ${add}</h5>
+													<h5>지번 : ${add_more}</h5>
+													<h5>⭐ ${star}</h5>
+												</header>
+											</article>`
+							}
+							$('#cafe_card_eunpyeong').append(temp_html)
+						}
+					}
+				});
 		}
 
 		function q23() {
-			$('#gangnam').hide();
-			$('#gangdong').hide();
-			$('#gangbuk').hide();
-			$('#gangseo').hide();
-			$('#gwanak').hide();
-			$('#gwangjin').hide();
-			$('#guro').hide();
-			$('#geumcheon').hide();
-			$('#nowon').hide();
-			$('#dobong').hide();
-			$('#dongdaemun').hide();
-			$('#dongjak').hide();
-			$('#mapo').hide();
-			$('#seodaemun').hide();
-			$('#seocho').hide();
-			$('#seongdong').hide();
-			$('#seongbuk').hide();
-			$('#songpa').hide();
-			$('#yangcheon').hide();
-			$('#yeongdeungpo').hide();
-			$('#yongsan').hide();
-			$('#eunpyeong').hide();
-			// $('#jongno').hide();
-			$('#jung').hide();
-			$('#jungnang').hide();
+			$('#gangnam').remove();
+			$('#gangdong').remove();
+			$('#gangbuk').remove();
+			$('#gangseo').remove();
+			$('#gwanak').remove();
+			$('#gwangjin').remove();
+			$('#guro').remove();
+			$('#geumcheon').remove();
+			$('#nowon').remove();
+			$('#dobong').remove();
+			$('#dongdaemun').remove();
+			$('#dongjak').remove();
+			$('#mapo').remove();
+			$('#seodaemun').remove();
+			$('#seocho').remove();
+			$('#seongdong').remove();
+			$('#seongbuk').remove();
+			$('#songpa').remove();
+			$('#yangcheon').remove();
+			$('#yeongdeungpo').remove();
+			$('#yongsan').remove();
+			$('#eunpyeong').remove();
+			$('#jung').remove();
+			$('#jungnang').remove();
+
+			$.ajax({
+					type: 'GET',
+					url: '/cafe',
+					data: {},
+					success: function (response) {
+						let rows = response['cafe']
+						for (let i = 0; i < rows.length; i++) {
+							let name = rows[i]['name']
+							let add = rows[i]['add']
+							let add_more = rows[i]['add_more']
+							let star = rows[i]['star']
+							let img = rows[i]['image']
+							let temp_html = ``
+							if (add.includes('종로구') == true) {
+								temp_html = `<article>
+												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
+												<header class="cafe_info">
+													<h3><a href="#">${name}</a></h3>
+													<h5>주소 : ${add}</h5>
+													<h5>지번 : ${add_more}</h5>
+													<h5>⭐ ${star}</h5>
+												</header>
+											</article>`
+							}
+							$('#cafe_card_jongno').append(temp_html)
+						}
+					}
+				});
 		}
 
 		function q24() {
-			$('#gangnam').hide();
-			$('#gangdong').hide();
-			$('#gangbuk').hide();
-			$('#gangseo').hide();
-			$('#gwanak').hide();
-			$('#gwangjin').hide();
-			$('#guro').hide();
-			$('#geumcheon').hide();
-			$('#nowon').hide();
-			$('#dobong').hide();
-			$('#dongdaemun').hide();
-			$('#dongjak').hide();
-			$('#mapo').hide();
-			$('#seodaemun').hide();
-			$('#seocho').hide();
-			$('#seongdong').hide();
-			$('#seongbuk').hide();
-			$('#songpa').hide();
-			$('#yangcheon').hide();
-			$('#yeongdeungpo').hide();
-			$('#yongsan').hide();
-			$('#eunpyeong').hide();
-			$('#jongno').hide();
-			// $('#jung').hide();
-			$('#jungnang').hide();
+			$('#gangnam').remove();
+			$('#gangdong').remove();
+			$('#gangbuk').remove();
+			$('#gangseo').remove();
+			$('#gwanak').remove();
+			$('#gwangjin').remove();
+			$('#guro').remove();
+			$('#geumcheon').remove();
+			$('#nowon').remove();
+			$('#dobong').remove();
+			$('#dongdaemun').remove();
+			$('#dongjak').remove();
+			$('#mapo').remove();
+			$('#seodaemun').remove();
+			$('#seocho').remove();
+			$('#seongdong').remove();
+			$('#seongbuk').remove();
+			$('#songpa').remove();
+			$('#yangcheon').remove();
+			$('#yeongdeungpo').remove();
+			$('#yongsan').remove();
+			$('#eunpyeong').remove();
+			$('#jongno').remove();
+			$('#jungnang').remove();
+
+			$.ajax({
+					type: 'GET',
+					url: '/cafe',
+					data: {},
+					success: function (response) {
+						let rows = response['cafe']
+						for (let i = 0; i < rows.length; i++) {
+							let name = rows[i]['name']
+							let add = rows[i]['add']
+							let add_more = rows[i]['add_more']
+							let star = rows[i]['star']
+							let img = rows[i]['image']
+							let temp_html = ``
+							if (add.includes('중구') == true) {
+								temp_html = `<article>
+												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
+												<header class="cafe_info">
+													<h3><a href="#">${name}</a></h3>
+													<h5>주소 : ${add}</h5>
+													<h5>지번 : ${add_more}</h5>
+													<h5>⭐ ${star}</h5>
+												</header>
+											</article>`
+							}
+							$('#cafe_card_jung').append(temp_html)
+						}
+					}
+				});
 		}
 
 		function q25() {
-			$('#gangnam').hide();
-			$('#gangdong').hide();
-			$('#gangbuk').hide();
-			$('#gangseo').hide();
-			$('#gwanak').hide();
-			$('#gwangjin').hide();
-			$('#guro').hide();
-			$('#geumcheon').hide();
-			$('#nowon').hide();
-			$('#dobong').hide();
-			$('#dongdaemun').hide();
-			$('#dongjak').hide();
-			$('#mapo').hide();
-			$('#seodaemun').hide();
-			$('#seocho').hide();
-			$('#seongdong').hide();
-			$('#seongbuk').hide();
-			$('#songpa').hide();
-			$('#yangcheon').hide();
-			$('#yeongdeungpo').hide();
-			$('#yongsan').hide();
-			$('#eunpyeong').hide();
-			$('#jongno').hide();
-			$('#jung').hide();
-			// $('#jungnang').hide();
+			$('#gangnam').remove();
+			$('#gangdong').remove();
+			$('#gangbuk').remove();
+			$('#gangseo').remove();
+			$('#gwanak').remove();
+			$('#gwangjin').remove();
+			$('#guro').remove();
+			$('#geumcheon').remove();
+			$('#nowon').remove();
+			$('#dobong').remove();
+			$('#dongdaemun').remove();
+			$('#dongjak').remove();
+			$('#mapo').remove();
+			$('#seodaemun').remove();
+			$('#seocho').remove();
+			$('#seongdong').remove();
+			$('#seongbuk').remove();
+			$('#songpa').remove();
+			$('#yangcheon').remove();
+			$('#yeongdeungpo').remove();
+			$('#yongsan').remove();
+			$('#eunpyeong').remove();
+			$('#jongno').remove();
+			$('#jung').remove();
+
+			$.ajax({
+					type: 'GET',
+					url: '/cafe',
+					data: {},
+					success: function (response) {
+						let rows = response['cafe']
+						for (let i = 0; i < rows.length; i++) {
+							let name = rows[i]['name']
+							let add = rows[i]['add']
+							let add_more = rows[i]['add_more']
+							let star = rows[i]['star']
+							let img = rows[i]['image']
+							let temp_html = ``
+							if (add.includes('중랑구') == true) {
+								temp_html = `<article>
+												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
+												<header class="cafe_info">
+													<h3><a href="#">${name}</a></h3>
+													<h5>주소 : ${add}</h5>
+													<h5>지번 : ${add_more}</h5>
+													<h5>⭐ ${star}</h5>
+												</header>
+											</article>`
+							}
+							$('#cafe_card_jungnang').append(temp_html)
+						}
+					}
+				});
+
 		}
 
 		function reload() {
 			window.location.reload();
 		}
 
-
-
-	// function q1() {
-	// 		$('#carousel_list > section').hide();
-	// 		$('#gangnam').show();
-	// }
-	//
-	// function q2() {
-	// 		$('#carousel_list > section').hide();
-	// 		$('#gangdong').show();
-	// }
-	//
-	// function q3() {
-	// 		$('#carousel_list > section').hide();
-	// 		$('#gangbuk').show();
-	// }
-	//
-	// function q4() {
-	// 		$('#carousel_list > section').hide();
-	// 		$('#gangseo').show();
-	// }
-	//
-	// function q5() {
-	// 		$('#carousel_list > section').hide();
-	// 		$('#gwanak').show();
-	// }
-	//
-	// function q6() {
-	// 		$('#carousel_list > section').hide();
-	// 		$('#gwangjin').show();
-	// }
-	//
-	// function q7() {
-	// 		$('#carousel_list > section').hide();
-	// 		$('#guro').show();
-	// }
-	//
-	// function q8() {
-	// 		$('#carousel_list > section').hide();
-	// 		$('#geumcheon').show();
-	// }
-	//
-	// function q9() {
-	// 		$('#carousel_list > section').hide();
-	// 		$('#nowon').show();
-	// }
-	//
-	// function q10() {
-	// 		$('#carousel_list > section').hide();
-	// 		$('#dobong').show();
-	// }
-	//
-	// function q11() {
-	// 		$('#carousel_list > section').hide();
-	// 		$('#dongdaemun').show();
-	// }
-	//
-	// function q12() {
-	// 		$('#carousel_list > section').hide();
-	// 		$('#dongjak').show();
-	// }
-	//
-	// function q13() {
-	// 		$('#carousel_list > section').hide();
-	// 		$('#mapo').show();
-	// }
-	//
-	// function q14() {
-	// 		$('#carousel_list > section').hide();
-	// 		$('#seodaemun').show();
-	// }
-	//
-	// function q15() {
-	// 		$('#carousel_list > section').hide();
-	// 		$('#seocho').show();
-	// }
-	//
-	// function q16() {
-	// 		$('#carousel_list > section').hide();
-	// 		$('#seongdong').show();
-	// }
-	//
-	// function q17() {
-	// 		$('#carousel_list > section').hide();
-	// 		$('#seongbuk').show();
-	// }
-	//
-	// function q18() {
-	// 		$('#carousel_list > section').hide();
-	// 		$('#songpa').show();
-	// }
-	//
-	// function q19() {
-	// 		$('#carousel_list > section').hide();
-	// 		$('#yangcheon').show();
-	// }
-	//
-	// function q20() {
-	// 		$('#carousel_list > section').hide();
-	// 		$('#yeongdeungpo').show();
-	// }
-	//
-	// function q21() {
-	// 		$('#carousel_list > section').hide();
-	// 		$('#yongsan').show();
-	// }
-	//
-	// function q22() {
-	// 		$('#carousel_list > section').hide();
-	// 		$('#eunpyeong').show();
-	// }
-	//
-	// function q23() {
-	// 		$('#carousel_list > section').hide();
-	// 		$('#jongno').show();
-	// }
-	//
-	// function q24() {
-	// 		$('#carousel_list > section').hide();
-	// 		$('#jung').show();
-	// }
-	//
-	// function q25() {
-	// 		$('#carousel_list > section').hide();
-	// 		$('#jungnang').show();
-	// }
     </script>
 
 
@@ -1101,1551 +1651,201 @@
 			<section id="gangnam" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 강남구 카페 목록</p>
-					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+					<a onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
-				<div id="cafe_card" class="reel">
-
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-
+				<div id="cafe_card_gangnam" class="reel">
 				</div>
 			</section>
 			<section id="gangdong" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 강동구 카페 목록</p>
-					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+					<a onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
-				<div class="reel">
-
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-
+				<div id="cafe_card_gangdong" class="reel">
 				</div>
 			</section>
 			<section id="gangbuk" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 강북구 카페 목록</p>
-					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+					<a onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
-				<div class="reel">
-
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-
+				<div id="cafe_card_gangbuk" class="reel">
 				</div>
 			</section>
 			<section id="gangseo" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 강서구 카페 목록</p>
-					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+					<a onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
-				<div class="reel">
-
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-
+				<div id="cafe_card_gangseo" class="reel">
 				</div>
 			</section>
 			<section id="gwanak" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 관악구 카페 목록</p>
-					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+					<a onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
-				<div class="reel">
-
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-
+				<div id="cafe_card_gwanak" class="reel">
 				</div>
 			</section>
 			<section id="gwangjin" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 광진구 카페 목록</p>
-					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+					<a onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
-				<div class="reel">
-
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-
+				<div id="cafe_card_gwangjin" class="reel">
 				</div>
 			</section>
 			<section id="guro" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 구로구 카페 목록</p>
-					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+					<a onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
-				<div class="reel">
-
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-
+				<div id="cafe_card_guro" class="reel">
 				</div>
 			</section>
 			<section id="geumcheon" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 금천구 카페 목록</p>
-					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+					<a onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
-				<div class="reel">
-
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-
+				<div id="cafe_card_geumcheon" class="reel">
 				</div>
 			</section>
 			<section id="nowon" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 노원구 카페 목록</p>
-					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+					<a onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
-				<div class="reel">
-
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-
+				<div id="cafe_card_nowon" class="reel">
 				</div>
 			</section>
 			<section id="dobong" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 도봉구 카페 목록</p>
-					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+					<a onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
-				<div class="reel">
-
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-
+				<div id="cafe_card_dobong" class="reel">
 				</div>
 			</section>
 			<section id="dongdaemun" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 동대문구 카페 목록</p>
-					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+					<a onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
-				<div class="reel">
-
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-
+				<div id="cafe_card_dongdaemun" class="reel">
 				</div>
 			</section>
 			<section id="dongjak" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 동작구 카페 목록</p>
-					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+					<a onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
-				<div class="reel">
-
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-
+				<div id="cafe_card_dongjak" class="reel">
 				</div>
 			</section>
 			<section id="mapo" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 마포구 카페 목록</p>
-					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+					<a onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
-				<div class="reel">
-
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-
+				<div id="cafe_card_mapo" class="reel">
 				</div>
 			</section>
 			<section id="seodaemun" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 서대문구 카페 목록</p>
-					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+					<a onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
-				<div class="reel">
-
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-
+				<div id="cafe_card_seodaemun" class="reel">
 				</div>
 			</section>
 			<section id="seocho" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 서초구 카페 목록</p>
-					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+					<a onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
-				<div class="reel">
-
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-
+				<div id="cafe_card_seocho" class="reel">
 				</div>
 			</section>
 			<section id="seongdong" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 성동구 카페 목록</p>
-					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+					<a onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
-				<div class="reel">
-
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-
+				<div id="cafe_card_seongdong" class="reel">
 				</div>
 			</section>
 			<section id="seongbuk" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 성북구 카페 목록</p>
-					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+					<a onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
-				<div class="reel">
-
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-
+				<div id="cafe_card_seongbuk" class="reel">
 				</div>
 			</section>
 			<section id="songpa" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 송파구 카페 목록</p>
-					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+					<a onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
-				<div class="reel">
-
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-
+				<div id="cafe_card_songpa" class="reel">
 				</div>
 			</section>
 			<section id="yangcheon" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 양천구 카페 목록</p>
-					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+					<a onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
-				<div class="reel">
-
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-
+				<div id="cafe_card_yangcheon" class="reel">
 				</div>
 			</section>
 			<section id="yeongdeungpo" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 영등포구 카페 목록</p>
-					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+					<a onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
-				<div class="reel">
-
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-
+				<div id="cafe_card_yeongdeungpo" class="reel">
 				</div>
 			</section>
 			<section id="yongsan" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 용산구 카페 목록</p>
-					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+					<a onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
-				<div class="reel">
-
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-
+				<div id="cafe_card_yongsan" class="reel">
 				</div>
 			</section>
 			<section id="eunpyeong" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 은평구 카페 목록</p>
-					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+					<a onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
-				<div class="reel">
-
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-
+				<div id="cafe_card_eunpyeong" class="reel">
 				</div>
 			</section>
 			<section id="jongno" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 종로구 카페 목록</p>
-					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+					<a onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
-				<div class="reel">
-
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-
+				<div id="cafe_card_jongno" class="reel">
 				</div>
 			</section>
 			<section id="jung" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 중구 카페 목록</p>
-					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+					<a onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
-				<div class="reel">
-
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-
+				<div id="cafe_card_jung" class="reel">
 				</div>
 			</section>
 			<section id="jungnang" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 중랑구 카페 목록</p>
-					<a onclick="reload()" href="#logo">홈으로 🔼</a>
+					<a onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
-				<div class="reel">
-
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article><article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-						<header class="cafe_info">
-							<h3><a href="#">카페명</a></h3>
-							<h5>주소 : </h5>
-							<h5>지번 : </h5>
-							<h5>⭐ 4.6</h5>
-						</header>
-					</article>
-
+				<div id="cafe_card_jungnang" class="reel">
 				</div>
 			</section>
 

@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, jsonify
-app = Flask(__name__)
+app = Flask(__name__, static_folder='templates/assets')
 
 import certifi
 ca = certifi.where()
