@@ -5,1543 +5,10 @@
 		<title>오늘 카페 어디가지?</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<link rel="stylesheet" href="/static/main.css" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script src="/static/main.js"></script>
 	</head>
-
-	<style>
-		.gu_button {
-			display: flex;
-			flex-direction: row;
-			align-items: center;
-			justify-content: center;
-		}
-
-		.button {
-			margin-left: 10px;
-		}
-
-		.home_key{
-			display: flex;
-			flex-direction: row;
-			justify-content: space-between;
-			margin: 0px 30px 0px 30px;
-		}
-		.home_key > p {
-			font-size: larger;
-			font-weight: bold;
-		}
-		.home_key > a {
-			font-size: larger;
-			font-weight: bold;
-			color: black;
-		}
-		.carousel_name {
-			color: black;
-		}
-		.cafe_info {
-			color: black;
-		}
-		.cafe_info > h3 {
-			margin-bottom: 15px;
-		}
-		#carousel_list > section {
-			display: none;
-		}
-
-	</style>
-
-	<script>
-		function listing() {
-			let search = $("#search").val();
-			$.ajax({
-				type: "GET",
-				url: "/cafe",
-				data: {search_give: search},
-				success: function (response) {
-					let rows = response["cafelist"];
-					if (limitLength < rows.length) {
-						for (let i = initLength; i < limitLength; i++) {
-							let name = rows[i]["name"];
-							let add = rows[i]["add"];
-							let add_more = rows[i]["add_more"];
-							let star = rows[i]["star"];
-							let url = rows[i]["url"];
-							let num = rows[i]["num"];
-							let image = rows[i]["image"];
-							let temp_html = `<article>
-								<a href="#" className="image featured"><img src="http://${image}" alt=""/></a>
-								<header className="cafe_info">
-									<h3><a href="#">${name}</a></h3>
-									<h5>주소 : ${add}</h5>
-									<h5>지번 : ${add_more}</h5>
-									<h5>⭐ &nbsp; ${star}</h5>
-								</header>
-							</article>`;
-
-							// let temp_html = ` <div class="col-lg-3 col-md-6">
-							//                         <div class="card" style="width: 20rem;">
-							//                             <img src="http://${image}" class="card-img-top" alt="">
-							//                             <div class="card-body">
-							//                                 <h5 class="card-title">${name}</h5>
-							//                                 <h6 class="card-text">${add}</h6>
-							//                                 <p class="card-subtitle mb-2 text-muted">${add_more}</p>
-							//                                 <p> ⭐ &nbsp; ${star} </p>
-							//                                 <a href="${url}" class="btn btn-primary">상세 보기</a>
-							//                             </div>
-							//                         </div>
-							//                     </div>`
-
-							$("#list").append(temp_html);
-							$("#morebtn").show();
-						}
-					} else {
-						for (let i = initLength; i < rows.length; i++) {
-							let name = rows[i]["name"];
-							let add = rows[i]["add"];
-							let add_more = rows[i]["add_more"];
-							let star = rows[i]["star"];
-							let url = rows[i]["url"];
-							let num = rows[i]["num"];
-							let image = rows[i]["image"];
-							let temp_html = `<article>
-								<a href="#" className="image featured"><img src="http://${image}" alt=""/></a>
-								<header className="cafe_info">
-									<h3><a href="#">${name}</a></h3>
-									<h5>주소 : ${add}</h5>
-									<h5>지번 : ${add_more}</h5>
-									<h5>⭐ &nbsp; ${star}</h5>
-								</header>
-							</article>`;
-							// let temp_html = ` <div class="col-lg-3 col-md-6">
-							//                         <div class="card" style="width: 20rem;">
-							//                             <img src="http://${image}" class="card-img-top" alt="">
-							//                             <div class="card-body">
-							//                                 <h5 class="card-title">${name}</h5>
-							//                                 <h6 class="card-text">${add}</h6>
-							//                                 <p class="card-subtitle mb-2 text-muted">${add_more}</p>
-							//                                 <p> ⭐ &nbsp; ${star} </p>
-							//                                 <a href="${url}" class="btn btn-primary">상세 보기</a>
-							//                             </div>
-							//                         </div>
-							//                     </div>`
-
-							$("#list").append(temp_html);
-							$("#morebtn").hide();
-						}
-					}
-				},
-			});
-		}
-
-		function q1() {
-				$.ajax({
-					type: 'GET',
-					url: '/cafe',
-					data: {},
-					success: function (response) {
-						let rows = response['cafe']
-						for (let i = 0; i < rows.length; i++) {
-							let name = rows[i]['name']
-							let add = rows[i]['add']
-							let add_more = rows[i]['add_more']
-							let star = rows[i]['star']
-							let img = rows[i]['image']
-							let temp_html = ``
-							if (add.includes('강남구') == true) {
-								temp_html = `<article>
-												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
-												<header class="cafe_info">
-													<h3><a href="#">${name}</a></h3>
-													<h5>주소 : ${add}</h5>
-													<h5>지번 : ${add_more}</h5>
-													<h5>⭐ ${star}</h5>
-												</header>
-											</article>`
-							}
-							$('#cafe_card_gangnam').append(temp_html)
-						}
-					}
-				});
-			$('#gangdong').remove();
-			$('#gangbuk').remove();
-			$('#gangseo').remove();
-			$('#gwanak').remove();
-			$('#gwangjin').remove();
-			$('#guro').remove();
-			$('#geumcheon').remove();
-			$('#nowon').remove();
-			$('#dobong').remove();
-			$('#dongdaemun').remove();
-			$('#dongjak').remove();
-			$('#mapo').remove();
-			$('#seodaemun').remove();
-			$('#seocho').remove();
-			$('#seongdong').remove();
-			$('#seongbuk').remove();
-			$('#songpa').remove();
-			$('#yangcheon').remove();
-			$('#yeongdeungpo').remove();
-			$('#yongsan').remove();
-			$('#eunpyeong').remove();
-			$('#jongno').remove();
-			$('#jung').remove();
-			$('#jungnang').remove();
-		}
-
-		function q2() {
-			$.ajax({
-					type: 'GET',
-					url: '/cafe',
-					data: {},
-					success: function (response) {
-						let rows = response['cafe']
-						for (let i = 0; i < rows.length; i++) {
-							let name = rows[i]['name']
-							let add = rows[i]['add']
-							let add_more = rows[i]['add_more']
-							let star = rows[i]['star']
-							let img = rows[i]['image']
-							let temp_html = ``
-							if (add.includes('강동구') == true) {
-								temp_html = `<article>
-												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
-												<header class="cafe_info">
-													<h3><a href="#">${name}</a></h3>
-													<h5>주소 : ${add}</h5>
-													<h5>지번 : ${add_more}</h5>
-													<h5>⭐ ${star}</h5>
-												</header>
-											</article>`
-							}
-							$('#cafe_card_gangdong').append(temp_html)
-						}
-					}
-				});
-
-			$('#gangnam').remove();
-			$('#gangbuk').remove();
-			$('#gangseo').remove();
-			$('#gwanak').remove();
-			$('#gwangjin').remove();
-			$('#guro').remove();
-			$('#geumcheon').remove();
-			$('#nowon').remove();
-			$('#dobong').remove();
-			$('#dongdaemun').remove();
-			$('#dongjak').remove();
-			$('#mapo').remove();
-			$('#seodaemun').remove();
-			$('#seocho').remove();
-			$('#seongdong').remove();
-			$('#seongbuk').remove();
-			$('#songpa').remove();
-			$('#yangcheon').remove();
-			$('#yeongdeungpo').remove();
-			$('#yongsan').remove();
-			$('#eunpyeong').remove();
-			$('#jongno').remove();
-			$('#jung').remove();
-			$('#jungnang').remove();
-		}
-
-		function q3() {
-			$.ajax({
-					type: 'GET',
-					url: '/cafe',
-					data: {},
-					success: function (response) {
-						let rows = response['cafe']
-						for (let i = 0; i < rows.length; i++) {
-							let name = rows[i]['name']
-							let add = rows[i]['add']
-							let add_more = rows[i]['add_more']
-							let star = rows[i]['star']
-							let img = rows[i]['image']
-							let temp_html = ``
-							if (add.includes('강북구') == true) {
-								temp_html = `<article>
-												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
-												<header class="cafe_info">
-													<h3><a href="#">${name}</a></h3>
-													<h5>주소 : ${add}</h5>
-													<h5>지번 : ${add_more}</h5>
-													<h5>⭐ ${star}</h5>
-												</header>
-											</article>`
-							}
-							$('#cafe_card_gangbuk').append(temp_html)
-						}
-					}
-				});
-
-			$('#gangnam').remove();
-			$('#gangdong').remove();
-			$('#gangseo').remove();
-			$('#gwanak').remove();
-			$('#gwangjin').remove();
-			$('#guro').remove();
-			$('#geumcheon').remove();
-			$('#nowon').remove();
-			$('#dobong').remove();
-			$('#dongdaemun').remove();
-			$('#dongjak').remove();
-			$('#mapo').remove();
-			$('#seodaemun').remove();
-			$('#seocho').remove();
-			$('#seongdong').remove();
-			$('#seongbuk').remove();
-			$('#songpa').remove();
-			$('#yangcheon').remove();
-			$('#yeongdeungpo').remove();
-			$('#yongsan').remove();
-			$('#eunpyeong').remove();
-			$('#jongno').remove();
-			$('#jung').remove();
-			$('#jungnang').remove();
-		}
-
-		function q4() {
-			$.ajax({
-					type: 'GET',
-					url: '/cafe',
-					data: {},
-					success: function (response) {
-						let rows = response['cafe']
-						for (let i = 0; i < rows.length; i++) {
-							let name = rows[i]['name']
-							let add = rows[i]['add']
-							let add_more = rows[i]['add_more']
-							let star = rows[i]['star']
-							let img = rows[i]['image']
-							let temp_html = ``
-							if (add.includes('강서구') == true) {
-								temp_html = `<article>
-												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
-												<header class="cafe_info">
-													<h3><a href="#">${name}</a></h3>
-													<h5>주소 : ${add}</h5>
-													<h5>지번 : ${add_more}</h5>
-													<h5>⭐ ${star}</h5>
-												</header>
-											</article>`
-							}
-							$('#cafe_card_gangseo').append(temp_html)
-						}
-					}
-				});
-
-			$('#gangnam').remove();
-			$('#gangdong').remove();
-			$('#gangbuk').remove();
-			$('#gwanak').remove();
-			$('#gwangjin').remove();
-			$('#guro').remove();
-			$('#geumcheon').remove();
-			$('#nowon').remove();
-			$('#dobong').remove();
-			$('#dongdaemun').remove();
-			$('#dongjak').remove();
-			$('#mapo').remove();
-			$('#seodaemun').remove();
-			$('#seocho').remove();
-			$('#seongdong').remove();
-			$('#seongbuk').remove();
-			$('#songpa').remove();
-			$('#yangcheon').remove();
-			$('#yeongdeungpo').remove();
-			$('#yongsan').remove();
-			$('#eunpyeong').remove();
-			$('#jongno').remove();
-			$('#jung').remove();
-			$('#jungnang').remove();
-		}
-
-		function q5() {
-			$.ajax({
-					type: 'GET',
-					url: '/cafe',
-					data: {},
-					success: function (response) {
-						let rows = response['cafe']
-						for (let i = 0; i < rows.length; i++) {
-							let name = rows[i]['name']
-							let add = rows[i]['add']
-							let add_more = rows[i]['add_more']
-							let star = rows[i]['star']
-							let img = rows[i]['image']
-							let temp_html = ``
-							if (add.includes('관악구') == true) {
-								temp_html = `<article>
-												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
-												<header class="cafe_info">
-													<h3><a href="#">${name}</a></h3>
-													<h5>주소 : ${add}</h5>
-													<h5>지번 : ${add_more}</h5>
-													<h5>⭐ ${star}</h5>
-												</header>
-											</article>`
-							}
-							$('#cafe_card_gwanak').append(temp_html)
-						}
-					}
-				});
-
-			$('#gangnam').remove();
-			$('#gangdong').remove();
-			$('#gangbuk').remove();
-			$('#gangseo').remove();
-			$('#gwangjin').remove();
-			$('#guro').remove();
-			$('#geumcheon').remove();
-			$('#nowon').remove();
-			$('#dobong').remove();
-			$('#dongdaemun').remove();
-			$('#dongjak').remove();
-			$('#mapo').remove();
-			$('#seodaemun').remove();
-			$('#seocho').remove();
-			$('#seongdong').remove();
-			$('#seongbuk').remove();
-			$('#songpa').remove();
-			$('#yangcheon').remove();
-			$('#yeongdeungpo').remove();
-			$('#yongsan').remove();
-			$('#eunpyeong').remove();
-			$('#jongno').remove();
-			$('#jung').remove();
-			$('#jungnang').remove();
-		}
-
-		function q6() {
-			$.ajax({
-					type: 'GET',
-					url: '/cafe',
-					data: {},
-					success: function (response) {
-						let rows = response['cafe']
-						for (let i = 0; i < rows.length; i++) {
-							let name = rows[i]['name']
-							let add = rows[i]['add']
-							let add_more = rows[i]['add_more']
-							let star = rows[i]['star']
-							let img = rows[i]['image']
-							let temp_html = ``
-							if (add.includes('광진구') == true) {
-								temp_html = `<article>
-												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
-												<header class="cafe_info">
-													<h3><a href="#">${name}</a></h3>
-													<h5>주소 : ${add}</h5>
-													<h5>지번 : ${add_more}</h5>
-													<h5>⭐ ${star}</h5>
-												</header>
-											</article>`
-							}
-							$('#cafe_card_gwangjin').append(temp_html)
-						}
-					}
-				});
-
-			$('#gangnam').remove();
-			$('#gangdong').remove();
-			$('#gangbuk').remove();
-			$('#gangseo').remove();
-			$('#gwanak').remove();
-			$('#guro').remove();
-			$('#geumcheon').remove();
-			$('#nowon').remove();
-			$('#dobong').remove();
-			$('#dongdaemun').remove();
-			$('#dongjak').remove();
-			$('#mapo').remove();
-			$('#seodaemun').remove();
-			$('#seocho').remove();
-			$('#seongdong').remove();
-			$('#seongbuk').remove();
-			$('#songpa').remove();
-			$('#yangcheon').remove();
-			$('#yeongdeungpo').remove();
-			$('#yongsan').remove();
-			$('#eunpyeong').remove();
-			$('#jongno').remove();
-			$('#jung').remove();
-			$('#jungnang').remove();
-		}
-
-		function q7() {
-			$.ajax({
-					type: 'GET',
-					url: '/cafe',
-					data: {},
-					success: function (response) {
-						let rows = response['cafe']
-						for (let i = 0; i < rows.length; i++) {
-							let name = rows[i]['name']
-							let add = rows[i]['add']
-							let add_more = rows[i]['add_more']
-							let star = rows[i]['star']
-							let img = rows[i]['image']
-							let temp_html = ``
-							if (add.includes('구로구') == true) {
-								temp_html = `<article>
-												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
-												<header class="cafe_info">
-													<h3><a href="#">${name}</a></h3>
-													<h5>주소 : ${add}</h5>
-													<h5>지번 : ${add_more}</h5>
-													<h5>⭐ ${star}</h5>
-												</header>
-											</article>`
-							}
-							$('#cafe_card_guro').append(temp_html)
-						}
-					}
-				});
-
-			$('#gangnam').remove();
-			$('#gangdong').remove();
-			$('#gangbuk').remove();
-			$('#gangseo').remove();
-			$('#gwanak').remove();
-			$('#gwangjin').remove();
-			$('#geumcheon').remove();
-			$('#nowon').remove();
-			$('#dobong').remove();
-			$('#dongdaemun').remove();
-			$('#dongjak').remove();
-			$('#mapo').remove();
-			$('#seodaemun').remove();
-			$('#seocho').remove();
-			$('#seongdong').remove();
-			$('#seongbuk').remove();
-			$('#songpa').remove();
-			$('#yangcheon').remove();
-			$('#yeongdeungpo').remove();
-			$('#yongsan').remove();
-			$('#eunpyeong').remove();
-			$('#jongno').remove();
-			$('#jung').remove();
-			$('#jungnang').remove();
-		}
-
-		function q8() {
-			$.ajax({
-					type: 'GET',
-					url: '/cafe',
-					data: {},
-					success: function (response) {
-						let rows = response['cafe']
-						for (let i = 0; i < rows.length; i++) {
-							let name = rows[i]['name']
-							let add = rows[i]['add']
-							let add_more = rows[i]['add_more']
-							let star = rows[i]['star']
-							let img = rows[i]['image']
-							let temp_html = ``
-							if (add.includes('금천구') == true) {
-								temp_html = `<article>
-												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
-												<header class="cafe_info">
-													<h3><a href="#">${name}</a></h3>
-													<h5>주소 : ${add}</h5>
-													<h5>지번 : ${add_more}</h5>
-													<h5>⭐ ${star}</h5>
-												</header>
-											</article>`
-							}
-							$('#cafe_card_geumcheon').append(temp_html)
-						}
-					}
-				});
-
-			$('#gangnam').remove();
-			$('#gangdong').remove();
-			$('#gangbuk').remove();
-			$('#gangseo').remove();
-			$('#gwanak').remove();
-			$('#gwangjin').remove();
-			$('#guro').remove();
-			$('#nowon').remove();
-			$('#dobong').remove();
-			$('#dongdaemun').remove();
-			$('#dongjak').remove();
-			$('#mapo').remove();
-			$('#seodaemun').remove();
-			$('#seocho').remove();
-			$('#seongdong').remove();
-			$('#seongbuk').remove();
-			$('#songpa').remove();
-			$('#yangcheon').remove();
-			$('#yeongdeungpo').remove();
-			$('#yongsan').remove();
-			$('#eunpyeong').remove();
-			$('#jongno').remove();
-			$('#jung').remove();
-			$('#jungnang').remove();
-		}
-
-		function q9() {
-			$.ajax({
-					type: 'GET',
-					url: '/cafe',
-					data: {},
-					success: function (response) {
-						let rows = response['cafe']
-						for (let i = 0; i < rows.length; i++) {
-							let name = rows[i]['name']
-							let add = rows[i]['add']
-							let add_more = rows[i]['add_more']
-							let star = rows[i]['star']
-							let img = rows[i]['image']
-							let temp_html = ``
-							if (add.includes('노원구') == true) {
-								temp_html = `<article>
-												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
-												<header class="cafe_info">
-													<h3><a href="#">${name}</a></h3>
-													<h5>주소 : ${add}</h5>
-													<h5>지번 : ${add_more}</h5>
-													<h5>⭐ ${star}</h5>
-												</header>
-											</article>`
-							}
-							$('#cafe_card_nowon').append(temp_html)
-						}
-					}
-				});
-
-			$('#gangnam').remove();
-			$('#gangdong').remove();
-			$('#gangbuk').remove();
-			$('#gangseo').remove();
-			$('#gwanak').remove();
-			$('#gwangjin').remove();
-			$('#guro').remove();
-			$('#geumcheon').remove();
-			$('#dobong').remove();
-			$('#dongdaemun').remove();
-			$('#dongjak').remove();
-			$('#mapo').remove();
-			$('#seodaemun').remove();
-			$('#seocho').remove();
-			$('#seongdong').remove();
-			$('#seongbuk').remove();
-			$('#songpa').remove();
-			$('#yangcheon').remove();
-			$('#yeongdeungpo').remove();
-			$('#yongsan').remove();
-			$('#eunpyeong').remove();
-			$('#jongno').remove();
-			$('#jung').remove();
-			$('#jungnang').remove();
-		}
-
-		function q10() {
-			$.ajax({
-					type: 'GET',
-					url: '/cafe',
-					data: {},
-					success: function (response) {
-						let rows = response['cafe']
-						for (let i = 0; i < rows.length; i++) {
-							let name = rows[i]['name']
-							let add = rows[i]['add']
-							let add_more = rows[i]['add_more']
-							let star = rows[i]['star']
-							let img = rows[i]['image']
-							let temp_html = ``
-							if (add.includes('도봉구') == true) {
-								temp_html = `<article>
-												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
-												<header class="cafe_info">
-													<h3><a href="#">${name}</a></h3>
-													<h5>주소 : ${add}</h5>
-													<h5>지번 : ${add_more}</h5>
-													<h5>⭐ ${star}</h5>
-												</header>
-											</article>`
-							}
-							$('#cafe_card_dobong').append(temp_html)
-						}
-					}
-				});
-
-			$('#gangnam').remove();
-			$('#gangdong').remove();
-			$('#gangbuk').remove();
-			$('#gangseo').remove();
-			$('#gwanak').remove();
-			$('#gwangjin').remove();
-			$('#guro').remove();
-			$('#geumcheon').remove();
-			$('#nowon').remove();
-			$('#dongdaemun').remove();
-			$('#dongjak').remove();
-			$('#mapo').remove();
-			$('#seodaemun').remove();
-			$('#seocho').remove();
-			$('#seongdong').remove();
-			$('#seongbuk').remove();
-			$('#songpa').remove();
-			$('#yangcheon').remove();
-			$('#yeongdeungpo').remove();
-			$('#yongsan').remove();
-			$('#eunpyeong').remove();
-			$('#jongno').remove();
-			$('#jung').remove();
-			$('#jungnang').remove();
-		}
-
-		function q11() {
-			$.ajax({
-					type: 'GET',
-					url: '/cafe',
-					data: {},
-					success: function (response) {
-						let rows = response['cafe']
-						for (let i = 0; i < rows.length; i++) {
-							let name = rows[i]['name']
-							let add = rows[i]['add']
-							let add_more = rows[i]['add_more']
-							let star = rows[i]['star']
-							let img = rows[i]['image']
-							let temp_html = ``
-							if (add.includes('동대문구') == true) {
-								temp_html = `<article>
-												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
-												<header class="cafe_info">
-													<h3><a href="#">${name}</a></h3>
-													<h5>주소 : ${add}</h5>
-													<h5>지번 : ${add_more}</h5>
-													<h5>⭐ ${star}</h5>
-												</header>
-											</article>`
-							}
-							$('#cafe_card_dongdaemun').append(temp_html)
-						}
-					}
-				});
-
-			$('#gangnam').remove();
-			$('#gangdong').remove();
-			$('#gangbuk').remove();
-			$('#gangseo').remove();
-			$('#gwanak').remove();
-			$('#gwangjin').remove();
-			$('#guro').remove();
-			$('#geumcheon').remove();
-			$('#nowon').remove();
-			$('#dobong').remove();
-			$('#dongjak').remove();
-			$('#mapo').remove();
-			$('#seodaemun').remove();
-			$('#seocho').remove();
-			$('#seongdong').remove();
-			$('#seongbuk').remove();
-			$('#songpa').remove();
-			$('#yangcheon').remove();
-			$('#yeongdeungpo').remove();
-			$('#yongsan').remove();
-			$('#eunpyeong').remove();
-			$('#jongno').remove();
-			$('#jung').remove();
-			$('#jungnang').remove();
-		}
-
-		function q12() {
-			$.ajax({
-					type: 'GET',
-					url: '/cafe',
-					data: {},
-					success: function (response) {
-						let rows = response['cafe']
-						for (let i = 0; i < rows.length; i++) {
-							let name = rows[i]['name']
-							let add = rows[i]['add']
-							let add_more = rows[i]['add_more']
-							let star = rows[i]['star']
-							let img = rows[i]['image']
-							let temp_html = ``
-							if (add.includes('동작구') == true) {
-								temp_html = `<article>
-												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
-												<header class="cafe_info">
-													<h3><a href="#">${name}</a></h3>
-													<h5>주소 : ${add}</h5>
-													<h5>지번 : ${add_more}</h5>
-													<h5>⭐ ${star}</h5>
-												</header>
-											</article>`
-							}
-							$('#cafe_card_dongjak').append(temp_html)
-						}
-					}
-				});
-
-			$('#gangnam').remove();
-			$('#gangdong').remove();
-			$('#gangbuk').remove();
-			$('#gangseo').remove();
-			$('#gwanak').remove();
-			$('#gwangjin').remove();
-			$('#guro').remove();
-			$('#geumcheon').remove();
-			$('#nowon').remove();
-			$('#dobong').remove();
-			$('#dongdaemun').remove();
-			$('#mapo').remove();
-			$('#seodaemun').remove();
-			$('#seocho').remove();
-			$('#seongdong').remove();
-			$('#seongbuk').remove();
-			$('#songpa').remove();
-			$('#yangcheon').remove();
-			$('#yeongdeungpo').remove();
-			$('#yongsan').remove();
-			$('#eunpyeong').remove();
-			$('#jongno').remove();
-			$('#jung').remove();
-			$('#jungnang').remove();
-		}
-
-		function q13() {
-			$.ajax({
-					type: 'GET',
-					url: '/cafe',
-					data: {},
-					success: function (response) {
-						let rows = response['cafe']
-						for (let i = 0; i < rows.length; i++) {
-							let name = rows[i]['name']
-							let add = rows[i]['add']
-							let add_more = rows[i]['add_more']
-							let star = rows[i]['star']
-							let img = rows[i]['image']
-							let temp_html = ``
-							if (add.includes('마포구') == true) {
-								temp_html = `<article>
-												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
-												<header class="cafe_info">
-													<h3><a href="#">${name}</a></h3>
-													<h5>주소 : ${add}</h5>
-													<h5>지번 : ${add_more}</h5>
-													<h5>⭐ ${star}</h5>
-												</header>
-											</article>`
-							}
-							$('#cafe_card_mapo').append(temp_html)
-						}
-					}
-				});
-
-			$('#gangnam').remove();
-			$('#gangdong').remove();
-			$('#gangbuk').remove();
-			$('#gangseo').remove();
-			$('#gwanak').remove();
-			$('#gwangjin').remove();
-			$('#guro').remove();
-			$('#geumcheon').remove();
-			$('#nowon').remove();
-			$('#dobong').remove();
-			$('#dongdaemun').remove();
-			$('#dongjak').remove();
-			$('#seodaemun').remove();
-			$('#seocho').remove();
-			$('#seongdong').remove();
-			$('#seongbuk').remove();
-			$('#songpa').remove();
-			$('#yangcheon').remove();
-			$('#yeongdeungpo').remove();
-			$('#yongsan').remove();
-			$('#eunpyeong').remove();
-			$('#jongno').remove();
-			$('#jung').remove();
-			$('#jungnang').remove();
-		}
-
-		function q14() {
-			$.ajax({
-					type: 'GET',
-					url: '/cafe',
-					data: {},
-					success: function (response) {
-						let rows = response['cafe']
-						for (let i = 0; i < rows.length; i++) {
-							let name = rows[i]['name']
-							let add = rows[i]['add']
-							let add_more = rows[i]['add_more']
-							let star = rows[i]['star']
-							let img = rows[i]['image']
-							let temp_html = ``
-							if (add.includes('서대문구') == true) {
-								temp_html = `<article>
-												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
-												<header class="cafe_info">
-													<h3><a href="#">${name}</a></h3>
-													<h5>주소 : ${add}</h5>
-													<h5>지번 : ${add_more}</h5>
-													<h5>⭐ ${star}</h5>
-												</header>
-											</article>`
-							}
-							$('#cafe_card_seodaemun').append(temp_html)
-						}
-					}
-				});
-
-			$('#gangnam').remove();
-			$('#gangdong').remove();
-			$('#gangbuk').remove();
-			$('#gangseo').remove();
-			$('#gwanak').remove();
-			$('#gwangjin').remove();
-			$('#guro').remove();
-			$('#geumcheon').remove();
-			$('#nowon').remove();
-			$('#dobong').remove();
-			$('#dongdaemun').remove();
-			$('#dongjak').remove();
-			$('#mapo').remove();
-			$('#seocho').remove();
-			$('#seongdong').remove();
-			$('#seongbuk').remove();
-			$('#songpa').remove();
-			$('#yangcheon').remove();
-			$('#yeongdeungpo').remove();
-			$('#yongsan').remove();
-			$('#eunpyeong').remove();
-			$('#jongno').remove();
-			$('#jung').remove();
-			$('#jungnang').remove();
-		}
-
-		function q15() {
-			$.ajax({
-					type: 'GET',
-					url: '/cafe',
-					data: {},
-					success: function (response) {
-						let rows = response['cafe']
-						for (let i = 0; i < rows.length; i++) {
-							let name = rows[i]['name']
-							let add = rows[i]['add']
-							let add_more = rows[i]['add_more']
-							let star = rows[i]['star']
-							let img = rows[i]['image']
-							let temp_html = ``
-							if (add.includes('서초구') == true) {
-								temp_html = `<article>
-												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
-												<header class="cafe_info">
-													<h3><a href="#">${name}</a></h3>
-													<h5>주소 : ${add}</h5>
-													<h5>지번 : ${add_more}</h5>
-													<h5>⭐ ${star}</h5>
-												</header>
-											</article>`
-							}
-							$('#cafe_card_seocho').append(temp_html)
-						}
-					}
-				});
-
-			$('#gangnam').remove();
-			$('#gangdong').remove();
-			$('#gangbuk').remove();
-			$('#gangseo').remove();
-			$('#gwanak').remove();
-			$('#gwangjin').remove();
-			$('#guro').remove();
-			$('#geumcheon').remove();
-			$('#nowon').remove();
-			$('#dobong').remove();
-			$('#dongdaemun').remove();
-			$('#dongjak').remove();
-			$('#mapo').remove();
-			$('#seodaemun').remove();
-			$('#seongdong').remove();
-			$('#seongbuk').remove();
-			$('#songpa').remove();
-			$('#yangcheon').remove();
-			$('#yeongdeungpo').remove();
-			$('#yongsan').remove();
-			$('#eunpyeong').remove();
-			$('#jongno').remove();
-			$('#jung').remove();
-			$('#jungnang').remove();
-		}
-
-		function q16() {
-			$.ajax({
-					type: 'GET',
-					url: '/cafe',
-					data: {},
-					success: function (response) {
-						let rows = response['cafe']
-						for (let i = 0; i < rows.length; i++) {
-							let name = rows[i]['name']
-							let add = rows[i]['add']
-							let add_more = rows[i]['add_more']
-							let star = rows[i]['star']
-							let img = rows[i]['image']
-							let temp_html = ``
-							if (add.includes('성동구') == true) {
-								temp_html = `<article>
-												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
-												<header class="cafe_info">
-													<h3><a href="#">${name}</a></h3>
-													<h5>주소 : ${add}</h5>
-													<h5>지번 : ${add_more}</h5>
-													<h5>⭐ ${star}</h5>
-												</header>
-											</article>`
-							}
-							$('#cafe_card_seongdong').append(temp_html)
-						}
-					}
-				});
-
-			$('#gangnam').remove();
-			$('#gangdong').remove();
-			$('#gangbuk').remove();
-			$('#gangseo').remove();
-			$('#gwanak').remove();
-			$('#gwangjin').remove();
-			$('#guro').remove();
-			$('#geumcheon').remove();
-			$('#nowon').remove();
-			$('#dobong').remove();
-			$('#dongdaemun').remove();
-			$('#dongjak').remove();
-			$('#mapo').remove();
-			$('#seodaemun').remove();
-			$('#seocho').remove();
-			$('#seongbuk').remove();
-			$('#songpa').remove();
-			$('#yangcheon').remove();
-			$('#yeongdeungpo').remove();
-			$('#yongsan').remove();
-			$('#eunpyeong').remove();
-			$('#jongno').remove();
-			$('#jung').remove();
-			$('#jungnang').remove();
-		}
-
-		function q17() {
-			$.ajax({
-					type: 'GET',
-					url: '/cafe',
-					data: {},
-					success: function (response) {
-						let rows = response['cafe']
-						for (let i = 0; i < rows.length; i++) {
-							let name = rows[i]['name']
-							let add = rows[i]['add']
-							let add_more = rows[i]['add_more']
-							let star = rows[i]['star']
-							let img = rows[i]['image']
-							let temp_html = ``
-							if (add.includes('성북구') == true) {
-								temp_html = `<article>
-												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
-												<header class="cafe_info">
-													<h3><a href="#">${name}</a></h3>
-													<h5>주소 : ${add}</h5>
-													<h5>지번 : ${add_more}</h5>
-													<h5>⭐ ${star}</h5>
-												</header>
-											</article>`
-							}
-							$('#cafe_card_seongbuk').append(temp_html)
-						}
-					}
-				});
-
-			$('#gangnam').remove();
-			$('#gangdong').remove();
-			$('#gangbuk').remove();
-			$('#gangseo').remove();
-			$('#gwanak').remove();
-			$('#gwangjin').remove();
-			$('#guro').remove();
-			$('#geumcheon').remove();
-			$('#nowon').remove();
-			$('#dobong').remove();
-			$('#dongdaemun').remove();
-			$('#dongjak').remove();
-			$('#mapo').remove();
-			$('#seodaemun').remove();
-			$('#seocho').remove();
-			$('#seongdong').remove();
-			$('#songpa').remove();
-			$('#yangcheon').remove();
-			$('#yeongdeungpo').remove();
-			$('#yongsan').remove();
-			$('#eunpyeong').remove();
-			$('#jongno').remove();
-			$('#jung').remove();
-			$('#jungnang').remove();
-		}
-
-		function q18() {
-			$.ajax({
-					type: 'GET',
-					url: '/cafe',
-					data: {},
-					success: function (response) {
-						let rows = response['cafe']
-						for (let i = 0; i < rows.length; i++) {
-							let name = rows[i]['name']
-							let add = rows[i]['add']
-							let add_more = rows[i]['add_more']
-							let star = rows[i]['star']
-							let img = rows[i]['image']
-							let temp_html = ``
-							if (add.includes('송파구') == true) {
-								temp_html = `<article>
-												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
-												<header class="cafe_info">
-													<h3><a href="#">${name}</a></h3>
-													<h5>주소 : ${add}</h5>
-													<h5>지번 : ${add_more}</h5>
-													<h5>⭐ ${star}</h5>
-												</header>
-											</article>`
-							}
-							$('#cafe_card_songpa').append(temp_html)
-						}
-					}
-				});
-
-			$('#gangnam').remove();
-			$('#gangdong').remove();
-			$('#gangbuk').remove();
-			$('#gangseo').remove();
-			$('#gwanak').remove();
-			$('#gwangjin').remove();
-			$('#guro').remove();
-			$('#geumcheon').remove();
-			$('#nowon').remove();
-			$('#dobong').remove();
-			$('#dongdaemun').remove();
-			$('#dongjak').remove();
-			$('#mapo').remove();
-			$('#seodaemun').remove();
-			$('#seocho').remove();
-			$('#seongdong').remove();
-			$('#seongbuk').remove();
-			$('#yangcheon').remove();
-			$('#yeongdeungpo').remove();
-			$('#yongsan').remove();
-			$('#eunpyeong').remove();
-			$('#jongno').remove();
-			$('#jung').remove();
-			$('#jungnang').remove();
-		}
-
-		function q19() {
-			$.ajax({
-					type: 'GET',
-					url: '/cafe',
-					data: {},
-					success: function (response) {
-						let rows = response['cafe']
-						for (let i = 0; i < rows.length; i++) {
-							let name = rows[i]['name']
-							let add = rows[i]['add']
-							let add_more = rows[i]['add_more']
-							let star = rows[i]['star']
-							let img = rows[i]['image']
-							let temp_html = ``
-							if (add.includes('양천구') == true) {
-								temp_html = `<article>
-												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
-												<header class="cafe_info">
-													<h3><a href="#">${name}</a></h3>
-													<h5>주소 : ${add}</h5>
-													<h5>지번 : ${add_more}</h5>
-													<h5>⭐ ${star}</h5>
-												</header>
-											</article>`
-							}
-							$('#cafe_card_yangcheon').append(temp_html)
-						}
-					}
-				});
-
-			$('#gangnam').remove();
-			$('#gangdong').remove();
-			$('#gangbuk').remove();
-			$('#gangseo').remove();
-			$('#gwanak').remove();
-			$('#gwangjin').remove();
-			$('#guro').remove();
-			$('#geumcheon').remove();
-			$('#nowon').remove();
-			$('#dobong').remove();
-			$('#dongdaemun').remove();
-			$('#dongjak').remove();
-			$('#mapo').remove();
-			$('#seodaemun').remove();
-			$('#seocho').remove();
-			$('#seongdong').remove();
-			$('#seongbuk').remove();
-			$('#songpa').remove();
-			$('#yeongdeungpo').remove();
-			$('#yongsan').remove();
-			$('#eunpyeong').remove();
-			$('#jongno').remove();
-			$('#jung').remove();
-			$('#jungnang').remove();
-		}
-
-		function q20() {
-			$.ajax({
-					type: 'GET',
-					url: '/cafe',
-					data: {},
-					success: function (response) {
-						let rows = response['cafe']
-						for (let i = 0; i < rows.length; i++) {
-							let name = rows[i]['name']
-							let add = rows[i]['add']
-							let add_more = rows[i]['add_more']
-							let star = rows[i]['star']
-							let img = rows[i]['image']
-							let temp_html = ``
-							if (add.includes('영등포구') == true) {
-								temp_html = `<article>
-												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
-												<header class="cafe_info">
-													<h3><a href="#">${name}</a></h3>
-													<h5>주소 : ${add}</h5>
-													<h5>지번 : ${add_more}</h5>
-													<h5>⭐ ${star}</h5>
-												</header>
-											</article>`
-							}
-							$('#cafe_card_yeongdeungpo').append(temp_html)
-						}
-					}
-				});
-
-			$('#gangnam').remove();
-			$('#gangdong').remove();
-			$('#gangbuk').remove();
-			$('#gangseo').remove();
-			$('#gwanak').remove();
-			$('#gwangjin').remove();
-			$('#guro').remove();
-			$('#geumcheon').remove();
-			$('#nowon').remove();
-			$('#dobong').remove();
-			$('#dongdaemun').remove();
-			$('#dongjak').remove();
-			$('#mapo').remove();
-			$('#seodaemun').remove();
-			$('#seocho').remove();
-			$('#seongdong').remove();
-			$('#seongbuk').remove();
-			$('#songpa').remove();
-			$('#yangcheon').remove();
-			$('#yongsan').remove();
-			$('#eunpyeong').remove();
-			$('#jongno').remove();
-			$('#jung').remove();
-			$('#jungnang').remove();
-		}
-
-		function q21() {
-			$.ajax({
-					type: 'GET',
-					url: '/cafe',
-					data: {},
-					success: function (response) {
-						let rows = response['cafe']
-						for (let i = 0; i < rows.length; i++) {
-							let name = rows[i]['name']
-							let add = rows[i]['add']
-							let add_more = rows[i]['add_more']
-							let star = rows[i]['star']
-							let img = rows[i]['image']
-							let temp_html = ``
-							if (add.includes('용산구') == true) {
-								temp_html = `<article>
-												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
-												<header class="cafe_info">
-													<h3><a href="#">${name}</a></h3>
-													<h5>주소 : ${add}</h5>
-													<h5>지번 : ${add_more}</h5>
-													<h5>⭐ ${star}</h5>
-												</header>
-											</article>`
-							}
-							$('#cafe_card_yongsan').append(temp_html)
-						}
-					}
-				});
-
-			$('#gangnam').remove();
-			$('#gangdong').remove();
-			$('#gangbuk').remove();
-			$('#gangseo').remove();
-			$('#gwanak').remove();
-			$('#gwangjin').remove();
-			$('#guro').remove();
-			$('#geumcheon').remove();
-			$('#nowon').remove();
-			$('#dobong').remove();
-			$('#dongdaemun').remove();
-			$('#dongjak').remove();
-			$('#mapo').remove();
-			$('#seodaemun').remove();
-			$('#seocho').remove();
-			$('#seongdong').remove();
-			$('#seongbuk').remove();
-			$('#songpa').remove();
-			$('#yangcheon').remove();
-			$('#yeongdeungpo').remove();
-			$('#eunpyeong').remove();
-			$('#jongno').remove();
-			$('#jung').remove();
-			$('#jungnang').remove();
-		}
-
-		function q22() {
-			$('#gangnam').remove();
-			$('#gangdong').remove();
-			$('#gangbuk').remove();
-			$('#gangseo').remove();
-			$('#gwanak').remove();
-			$('#gwangjin').remove();
-			$('#guro').remove();
-			$('#geumcheon').remove();
-			$('#nowon').remove();
-			$('#dobong').remove();
-			$('#dongdaemun').remove();
-			$('#dongjak').remove();
-			$('#mapo').remove();
-			$('#seodaemun').remove();
-			$('#seocho').remove();
-			$('#seongdong').remove();
-			$('#seongbuk').remove();
-			$('#songpa').remove();
-			$('#yangcheon').remove();
-			$('#yeongdeungpo').remove();
-			$('#yongsan').remove();
-			$('#jongno').remove();
-			$('#jung').remove();
-			$('#jungnang').remove();
-
-			$.ajax({
-					type: 'GET',
-					url: '/cafe',
-					data: {},
-					success: function (response) {
-						let rows = response['cafe']
-						for (let i = 0; i < rows.length; i++) {
-							let name = rows[i]['name']
-							let add = rows[i]['add']
-							let add_more = rows[i]['add_more']
-							let star = rows[i]['star']
-							let img = rows[i]['image']
-							let temp_html = ``
-							if (add.includes('은평구') == true) {
-								temp_html = `<article>
-												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
-												<header class="cafe_info">
-													<h3><a href="#">${name}</a></h3>
-													<h5>주소 : ${add}</h5>
-													<h5>지번 : ${add_more}</h5>
-													<h5>⭐ ${star}</h5>
-												</header>
-											</article>`
-							}
-							$('#cafe_card_eunpyeong').append(temp_html)
-						}
-					}
-				});
-		}
-
-		function q23() {
-			$('#gangnam').remove();
-			$('#gangdong').remove();
-			$('#gangbuk').remove();
-			$('#gangseo').remove();
-			$('#gwanak').remove();
-			$('#gwangjin').remove();
-			$('#guro').remove();
-			$('#geumcheon').remove();
-			$('#nowon').remove();
-			$('#dobong').remove();
-			$('#dongdaemun').remove();
-			$('#dongjak').remove();
-			$('#mapo').remove();
-			$('#seodaemun').remove();
-			$('#seocho').remove();
-			$('#seongdong').remove();
-			$('#seongbuk').remove();
-			$('#songpa').remove();
-			$('#yangcheon').remove();
-			$('#yeongdeungpo').remove();
-			$('#yongsan').remove();
-			$('#eunpyeong').remove();
-			$('#jung').remove();
-			$('#jungnang').remove();
-
-			$.ajax({
-					type: 'GET',
-					url: '/cafe',
-					data: {},
-					success: function (response) {
-						let rows = response['cafe']
-						for (let i = 0; i < rows.length; i++) {
-							let name = rows[i]['name']
-							let add = rows[i]['add']
-							let add_more = rows[i]['add_more']
-							let star = rows[i]['star']
-							let img = rows[i]['image']
-							let temp_html = ``
-							if (add.includes('종로구') == true) {
-								temp_html = `<article>
-												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
-												<header class="cafe_info">
-													<h3><a href="#">${name}</a></h3>
-													<h5>주소 : ${add}</h5>
-													<h5>지번 : ${add_more}</h5>
-													<h5>⭐ ${star}</h5>
-												</header>
-											</article>`
-							}
-							$('#cafe_card_jongno').append(temp_html)
-						}
-					}
-				});
-		}
-
-		function q24() {
-			$('#gangnam').remove();
-			$('#gangdong').remove();
-			$('#gangbuk').remove();
-			$('#gangseo').remove();
-			$('#gwanak').remove();
-			$('#gwangjin').remove();
-			$('#guro').remove();
-			$('#geumcheon').remove();
-			$('#nowon').remove();
-			$('#dobong').remove();
-			$('#dongdaemun').remove();
-			$('#dongjak').remove();
-			$('#mapo').remove();
-			$('#seodaemun').remove();
-			$('#seocho').remove();
-			$('#seongdong').remove();
-			$('#seongbuk').remove();
-			$('#songpa').remove();
-			$('#yangcheon').remove();
-			$('#yeongdeungpo').remove();
-			$('#yongsan').remove();
-			$('#eunpyeong').remove();
-			$('#jongno').remove();
-			$('#jungnang').remove();
-
-			$.ajax({
-					type: 'GET',
-					url: '/cafe',
-					data: {},
-					success: function (response) {
-						let rows = response['cafe']
-						for (let i = 0; i < rows.length; i++) {
-							let name = rows[i]['name']
-							let add = rows[i]['add']
-							let add_more = rows[i]['add_more']
-							let star = rows[i]['star']
-							let img = rows[i]['image']
-							let temp_html = ``
-							if (add.includes('중구') == true) {
-								temp_html = `<article>
-												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
-												<header class="cafe_info">
-													<h3><a href="#">${name}</a></h3>
-													<h5>주소 : ${add}</h5>
-													<h5>지번 : ${add_more}</h5>
-													<h5>⭐ ${star}</h5>
-												</header>
-											</article>`
-							}
-							$('#cafe_card_jung').append(temp_html)
-						}
-					}
-				});
-		}
-
-		function q25() {
-			$('#gangnam').remove();
-			$('#gangdong').remove();
-			$('#gangbuk').remove();
-			$('#gangseo').remove();
-			$('#gwanak').remove();
-			$('#gwangjin').remove();
-			$('#guro').remove();
-			$('#geumcheon').remove();
-			$('#nowon').remove();
-			$('#dobong').remove();
-			$('#dongdaemun').remove();
-			$('#dongjak').remove();
-			$('#mapo').remove();
-			$('#seodaemun').remove();
-			$('#seocho').remove();
-			$('#seongdong').remove();
-			$('#seongbuk').remove();
-			$('#songpa').remove();
-			$('#yangcheon').remove();
-			$('#yeongdeungpo').remove();
-			$('#yongsan').remove();
-			$('#eunpyeong').remove();
-			$('#jongno').remove();
-			$('#jung').remove();
-
-			$.ajax({
-					type: 'GET',
-					url: '/cafe',
-					data: {},
-					success: function (response) {
-						let rows = response['cafe']
-						for (let i = 0; i < rows.length; i++) {
-							let name = rows[i]['name']
-							let add = rows[i]['add']
-							let add_more = rows[i]['add_more']
-							let star = rows[i]['star']
-							let img = rows[i]['image']
-							let temp_html = ``
-							if (add.includes('중랑구') == true) {
-								temp_html = `<article>
-												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
-												<header class="cafe_info">
-													<h3><a href="#">${name}</a></h3>
-													<h5>주소 : ${add}</h5>
-													<h5>지번 : ${add_more}</h5>
-													<h5>⭐ ${star}</h5>
-												</header>
-											</article>`
-							}
-							$('#cafe_card_jungnang').append(temp_html)
-						}
-					}
-				});
-
-		}
-
-		function reload() {
-			window.location.reload();
-		}
-
-    </script>
-
-
 
 	<body class="homepage is-preload">
 		<div id="page-wrapper">
@@ -1558,7 +25,7 @@
 						</header>
 						<div class="gu_button">
 							<footer onclick="q1()">
-								<a href="#gangnam" class="button circled scrolly">강남구</a>
+								<a class="button circled scrolly">강남구</a>
 							</footer>
 							<footer onclick="q2()">
 								<a href="#gangdong" class="button circled scrolly">강동구</a>
@@ -1643,23 +110,26 @@
 			<!-- Banner -->
 				<section id="banner">
 					<header>
-						<h3><strong>Made by...</strong>  7기 12조</h3>
+						<h3><strong>Made by...</strong>  </h3>
 					</header>
 				</section>
+				</div>
 
 			<!-- Carousel -->
 			<section id="gangnam" class="carousel">
-				<div class="home_key">
+					<div class="home_key">
 					<p class="carousel_name">☕ 강남구 카페 목록</p>
-					<a onclick="reload()" href="#">홈으로 🔼</a>
-				</div>
+					<a class="floating" onclick="reload()" href="#">홈으로 🔼</a>
+					</div>
+				</span>
+
 				<div id="cafe_card_gangnam" class="reel">
 				</div>
 			</section>
 			<section id="gangdong" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 강동구 카페 목록</p>
-					<a onclick="reload()" href="#">홈으로 🔼</a>
+					<a class="floating" onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
 				<div id="cafe_card_gangdong" class="reel">
 				</div>
@@ -1667,7 +137,7 @@
 			<section id="gangbuk" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 강북구 카페 목록</p>
-					<a onclick="reload()" href="#">홈으로 🔼</a>
+					<a class="floating" onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
 				<div id="cafe_card_gangbuk" class="reel">
 				</div>
@@ -1675,7 +145,7 @@
 			<section id="gangseo" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 강서구 카페 목록</p>
-					<a onclick="reload()" href="#">홈으로 🔼</a>
+					<a class="floating" onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
 				<div id="cafe_card_gangseo" class="reel">
 				</div>
@@ -1683,7 +153,7 @@
 			<section id="gwanak" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 관악구 카페 목록</p>
-					<a onclick="reload()" href="#">홈으로 🔼</a>
+					<a class="floating" onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
 				<div id="cafe_card_gwanak" class="reel">
 				</div>
@@ -1691,7 +161,7 @@
 			<section id="gwangjin" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 광진구 카페 목록</p>
-					<a onclick="reload()" href="#">홈으로 🔼</a>
+					<a class="floating" onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
 				<div id="cafe_card_gwangjin" class="reel">
 				</div>
@@ -1699,7 +169,7 @@
 			<section id="guro" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 구로구 카페 목록</p>
-					<a onclick="reload()" href="#">홈으로 🔼</a>
+					<a class="floating" onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
 				<div id="cafe_card_guro" class="reel">
 				</div>
@@ -1707,7 +177,7 @@
 			<section id="geumcheon" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 금천구 카페 목록</p>
-					<a onclick="reload()" href="#">홈으로 🔼</a>
+					<a class="floating" onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
 				<div id="cafe_card_geumcheon" class="reel">
 				</div>
@@ -1715,7 +185,7 @@
 			<section id="nowon" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 노원구 카페 목록</p>
-					<a onclick="reload()" href="#">홈으로 🔼</a>
+					<a class="floating" onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
 				<div id="cafe_card_nowon" class="reel">
 				</div>
@@ -1723,7 +193,7 @@
 			<section id="dobong" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 도봉구 카페 목록</p>
-					<a onclick="reload()" href="#">홈으로 🔼</a>
+					<a class="floating" onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
 				<div id="cafe_card_dobong" class="reel">
 				</div>
@@ -1731,7 +201,7 @@
 			<section id="dongdaemun" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 동대문구 카페 목록</p>
-					<a onclick="reload()" href="#">홈으로 🔼</a>
+					<a class="floating" onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
 				<div id="cafe_card_dongdaemun" class="reel">
 				</div>
@@ -1739,7 +209,7 @@
 			<section id="dongjak" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 동작구 카페 목록</p>
-					<a onclick="reload()" href="#">홈으로 🔼</a>
+					<a class="floating" onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
 				<div id="cafe_card_dongjak" class="reel">
 				</div>
@@ -1747,7 +217,7 @@
 			<section id="mapo" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 마포구 카페 목록</p>
-					<a onclick="reload()" href="#">홈으로 🔼</a>
+					<a class="floating" onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
 				<div id="cafe_card_mapo" class="reel">
 				</div>
@@ -1755,7 +225,7 @@
 			<section id="seodaemun" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 서대문구 카페 목록</p>
-					<a onclick="reload()" href="#">홈으로 🔼</a>
+					<a class="floating" onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
 				<div id="cafe_card_seodaemun" class="reel">
 				</div>
@@ -1763,7 +233,7 @@
 			<section id="seocho" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 서초구 카페 목록</p>
-					<a onclick="reload()" href="#">홈으로 🔼</a>
+					<a class="floating" onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
 				<div id="cafe_card_seocho" class="reel">
 				</div>
@@ -1771,7 +241,7 @@
 			<section id="seongdong" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 성동구 카페 목록</p>
-					<a onclick="reload()" href="#">홈으로 🔼</a>
+					<a class="floating" onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
 				<div id="cafe_card_seongdong" class="reel">
 				</div>
@@ -1779,7 +249,7 @@
 			<section id="seongbuk" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 성북구 카페 목록</p>
-					<a onclick="reload()" href="#">홈으로 🔼</a>
+					<a class="floating" onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
 				<div id="cafe_card_seongbuk" class="reel">
 				</div>
@@ -1787,7 +257,7 @@
 			<section id="songpa" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 송파구 카페 목록</p>
-					<a onclick="reload()" href="#">홈으로 🔼</a>
+					<a class="floating" onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
 				<div id="cafe_card_songpa" class="reel">
 				</div>
@@ -1795,7 +265,7 @@
 			<section id="yangcheon" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 양천구 카페 목록</p>
-					<a onclick="reload()" href="#">홈으로 🔼</a>
+					<a class="floating" onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
 				<div id="cafe_card_yangcheon" class="reel">
 				</div>
@@ -1803,7 +273,7 @@
 			<section id="yeongdeungpo" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 영등포구 카페 목록</p>
-					<a onclick="reload()" href="#">홈으로 🔼</a>
+					<a class="floating" onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
 				<div id="cafe_card_yeongdeungpo" class="reel">
 				</div>
@@ -1811,7 +281,7 @@
 			<section id="yongsan" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 용산구 카페 목록</p>
-					<a onclick="reload()" href="#">홈으로 🔼</a>
+					<a class="floating" onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
 				<div id="cafe_card_yongsan" class="reel">
 				</div>
@@ -1819,7 +289,7 @@
 			<section id="eunpyeong" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 은평구 카페 목록</p>
-					<a onclick="reload()" href="#">홈으로 🔼</a>
+					<a class="floating" onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
 				<div id="cafe_card_eunpyeong" class="reel">
 				</div>
@@ -1827,7 +297,7 @@
 			<section id="jongno" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 종로구 카페 목록</p>
-					<a onclick="reload()" href="#">홈으로 🔼</a>
+					<a class="floating" onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
 				<div id="cafe_card_jongno" class="reel">
 				</div>
@@ -1835,7 +305,7 @@
 			<section id="jung" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 중구 카페 목록</p>
-					<a onclick="reload()" href="#">홈으로 🔼</a>
+					<a class="floating" onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
 				<div id="cafe_card_jung" class="reel">
 				</div>
@@ -1843,24 +313,11 @@
 			<section id="jungnang" class="carousel">
 				<div class="home_key">
 					<p class="carousel_name">☕ 중랑구 카페 목록</p>
-					<a onclick="reload()" href="#">홈으로 🔼</a>
+					<a class="floating" onclick="reload()" href="#">홈으로 🔼</a>
 				</div>
 				<div id="cafe_card_jungnang" class="reel">
 				</div>
 			</section>
-
-
-
-
-		 Scripts
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
+		</div>
 	</body>
 </html>
