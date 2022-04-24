@@ -5,8 +5,10 @@ import certifi
 ca = certifi.where()
 
 from pymongo import MongoClient
-client = MongoClient('mongodb+srv://test:sparta@cluster0.zgm92.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', tlsCAFile=ca)
+client = MongoClient('mongodb+srv://JunsuLim:BIN2001kr!!~@cluster0.6mof6.mongodb.net/Cluster0?retryWrites=true&w=majority')
+# client = MongoClient('mongodb+srv://test:sparta@cluster0.zgm92.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', tlsCAFile=ca)
 db = client.cafe
+
 
 @app.route('/')
 def home():
