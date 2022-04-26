@@ -14,6 +14,10 @@ db = client.cafe
 def home():
    return render_template('index.html')
 
+@app.route('/review')
+def review():
+   return render_template('review.html')
+
 @app.route("/cafe", methods=["GET"])
 def data_get():
     cafe_list = list(db.cafe.find({}, {'_id': False}))

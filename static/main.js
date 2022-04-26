@@ -38,9 +38,9 @@ function windowonload() {
                 let star = rows[i]['star']
                 let img = rows[i]['image']
                 let temp_html = `<article>
-												<a href="#" class="image featured"><img src="http://${img}" alt="" /></a>
+												<a href="/review" class="image featured"><img src="http://${img}" alt="" /></a>
 												<header class="cafe_info">
-													<h3><a href="#">${name}</a></h3>
+													<h3><a href="/review">${name}</a></h3>
 													<h5>주소 : ${add}</h5>
 													<h5>지번 : ${add_more}</h5>
 													<h5>⭐ ${star}</h5>
@@ -129,7 +129,7 @@ function q1() {
 
 
     $(document).ready(function(){
-        window.scrollTo(0, 1310);
+        window.scrollTo(0, 50000);
     });
 }
 
@@ -138,7 +138,7 @@ function q2() {
 
 
     $(document).ready(function(){
-        window.scrollTo(0, 1310);
+        window.scrollTo(0, 50000);
     });
 }
 
@@ -147,7 +147,7 @@ function q3() {
 
 
     $(document).ready(function(){
-        window.scrollTo(0, 1310);
+        window.scrollTo(0, 50000);
     });
 }
 
@@ -156,7 +156,7 @@ function q4() {
 
 
     $(document).ready(function(){
-        window.scrollTo(0, 1310);
+        window.scrollTo(0, 50000);
     });
 }
 
@@ -165,7 +165,7 @@ function q5() {
 
 
     $(document).ready(function(){
-        window.scrollTo(0, 1310);
+        window.scrollTo(0, 50000);
     });
 }
 
@@ -174,7 +174,7 @@ function q6() {
 
 
     $(document).ready(function(){
-        window.scrollTo(0, 1310);
+        window.scrollTo(0, 50000);
     });
 }
 
@@ -183,7 +183,7 @@ function q7() {
 
 
     $(document).ready(function(){
-        window.scrollTo(0, 1310);
+        window.scrollTo(0, 50000);
     });
 }
 
@@ -192,7 +192,7 @@ function q8() {
 
 
     $(document).ready(function(){
-        window.scrollTo(0, 1310);
+        window.scrollTo(0, 50000);
     });
 }
 
@@ -201,7 +201,7 @@ function q9() {
 
 
     $(document).ready(function(){
-        window.scrollTo(0, 1310);
+        window.scrollTo(0, 50000);
     });
 }
 
@@ -210,7 +210,7 @@ function q10() {
 
 
     $(document).ready(function(){
-        window.scrollTo(0, 1310);
+        window.scrollTo(0, 50000);
     });
 }
 
@@ -219,7 +219,7 @@ function q11() {
 
 
     $(document).ready(function(){
-        window.scrollTo(0, 1310);
+        window.scrollTo(0, 50000);
     });
 }
 
@@ -228,7 +228,7 @@ function q12() {
 
 
     $(document).ready(function(){
-        window.scrollTo(0, 1310);
+        window.scrollTo(0, 50000);
     });
 }
 
@@ -237,7 +237,7 @@ function q13() {
 
 
     $(document).ready(function(){
-        window.scrollTo(0, 1310);
+        window.scrollTo(0, 50000);
     });
 }
 
@@ -246,7 +246,7 @@ function q14() {
 
 
     $(document).ready(function(){
-        window.scrollTo(0, 1310);
+        window.scrollTo(0, 50000);
     });
 }
 
@@ -255,7 +255,7 @@ function q15() {
 
 
     $(document).ready(function(){
-        window.scrollTo(0, 1310);
+        window.scrollTo(0, 50000);
     });
 }
 
@@ -264,7 +264,7 @@ function q16() {
 
 
     $(document).ready(function(){
-        window.scrollTo(0, 1310);
+        window.scrollTo(0, 50000);
     });
 }
 
@@ -273,7 +273,7 @@ function q17() {
 
 
     $(document).ready(function(){
-        window.scrollTo(0, 1310);
+        window.scrollTo(0, 50000);
     });
 }
 
@@ -282,7 +282,7 @@ function q18() {
 
 
     $(document).ready(function(){
-        window.scrollTo(0, 1310);
+        window.scrollTo(0, 50000);
     });
 }
 
@@ -291,7 +291,7 @@ function q19() {
 
 
     $(document).ready(function(){
-        window.scrollTo(0, 1310);
+        window.scrollTo(0, 50000);
     });
 }
 
@@ -300,7 +300,7 @@ function q20() {
 
 
     $(document).ready(function(){
-        window.scrollTo(0, 1310);
+        window.scrollTo(0, 50000);
     });
 }
 
@@ -309,7 +309,7 @@ function q21() {
 
 
     $(document).ready(function(){
-        window.scrollTo(0, 1310);
+        window.scrollTo(0, 50000);
     });
 }
 
@@ -318,7 +318,7 @@ function q22() {
 
 
     $(document).ready(function(){
-        window.scrollTo(0, 1310);
+        window.scrollTo(0, 50000);
     });
 }
 
@@ -327,7 +327,7 @@ function q23() {
 
 
     $(document).ready(function(){
-        window.scrollTo(0, 1310);
+        window.scrollTo(0, 50000);
     });
 }
 
@@ -336,7 +336,7 @@ function q24() {
 
 
     $(document).ready(function(){
-        window.scrollTo(0, 1310);
+        window.scrollTo(0, 50000);
     });
 }
 
@@ -345,10 +345,12 @@ function q25() {
 
 
     $(document).ready(function(){
-        window.scrollTo(0, 1310);
+        window.scrollTo(0, 50000);
     });
 }
 
 function reload() {
-    window.location.reload();
+    $(document).ready(function(){
+        window.scrollTo(0, 0);
+    });
 }
